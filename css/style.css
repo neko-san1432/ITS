@@ -1,11 +1,13 @@
-#menuPane{
+/* #menuPane{
     background-color: red;
-    width: 100vw;
-    height: 100vh;
+    width: 30vw;
+    height: 98vh;
     z-index: 4;    
-    display: none;
-}
-#blurPane{
+    border-radius:0 20px 20px  0;
+    border: black solid 5px;
+    margin-left: -10px;
+} 
+ #blurPane{
     background-color: violet;
     width: 100vw;
     height: 100vh;
@@ -18,6 +20,17 @@
     height: 100vh;
     z-index: 3;
 }
+#close{
+    width: 20px;
+    height: 20px;
+    margin-left: 27vw;
+    margin-top: 2vh;
+    background-color: transparent;
+    border: none;
+}
+#close:hover{
+    text-shadow: blueviolet ;
+} */
 #menuB {
     margin: 10px;
     position: relative;
@@ -49,11 +62,30 @@
 }
 #start{
     z-index: 1;
+    width: 100vw;
+    height: 100vh;
     margin-top: -70px;
     margin-left: -10px;
     width: 100vw;
     height: 100vh;
+    background-image: url(../assets/images/processed/mountaincrop3.gif);
+    background-size:contain;
+    /* clip-path: rect();    */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+ .mountain{
+    position: relative;
+    margin-top: 0vh;
+    width: 100vw;
+    height: 70vh;
+    /* background-image: url("../assets/images/24281573-removebg-preview.png"); */
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100vh;
+    margin-top: -31vh;
+} 
 div{
     position: absolute;
 }
@@ -61,3 +93,5 @@ html, body{
     padding: 0;
     margin: 0;
 }
+
+

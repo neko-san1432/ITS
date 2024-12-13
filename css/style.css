@@ -1,24 +1,20 @@
-/* #menuPane{
+#menuPane{
     background-color: red;
     width: 30vw;
     height: 98vh;
     z-index: 4;    
     border-radius:0 20px 20px  0;
     border: black solid 5px;
-    margin-left: -10px;
+    margin-left: -31vw;
+    /* position: ; */
 } 
- #blurPane{
-    background-color: violet;
-    width: 100vw;
-    height: 100vh;
-    z-index: 2;
-}
+
 #startPane{ 
     position: absolute;
     background-color: black;
     width: 100vw;
     height: 100vh;
-    z-index: 3;
+    z-index: 3; 
 }
 #close{
     width: 20px;
@@ -30,9 +26,10 @@
 }
 #close:hover{
     text-shadow: blueviolet ;
-} */
+}
 #menuB {
     margin: 10px;
+    /* margin-top: -50px; */
     position: relative;
     width: 50px;
     height: 50px;
@@ -41,7 +38,8 @@
     background-color: white;
     border-radius: 5px;
     align-items: center;
-    z-index: 2;
+    z-index: 5;
+    /* animation: startToSelection 0.75s ease-in; */
 }
 #doorPane{
     background-color: rgb(148, 238, 130);
@@ -61,31 +59,37 @@
     border-radius: 2px;
 }
 #start{
-    z-index: 1;
+    z-index: 1; 
     width: 100vw;
     height: 100vh;
-    margin-top: -70px;
-    margin-left: -10px;
-    width: 100vw;
-    height: 100vh;
-    background-image: url(../assets/images/processed/mountaincrop3.gif);
+    background-color: rgb(108, 65, 65);
     background-size:contain;
-    /* clip-path: rect();    */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
- .mountain{
+}  
+.mountain{
     position: relative;
     margin-top: 0vh;
     width: 100vw;
     height: 70vh;
-    /* background-image: url("../assets/images/24281573-removebg-preview.png"); */
     background-repeat: no-repeat;
     background-position: top center;
     background-size: 100vh;
     margin-top: -31vh;
 } 
+.container{
+    width: 100vw;
+    height: 100vh;
+}
+#select{
+    margin-top:-100vh ;
+    width: 100vw;
+    height: 100vh;
+    background-color: aqua;
+    position: absolute;
+    z-index: 3;
+}
 div{
     position: absolute;
 }
@@ -93,5 +97,53 @@ html, body{
     padding: 0;
     margin: 0;
 }
-
-
+.sdSelect{
+    animation: swipedownSelect 2s ease-in-out forwards;
+}
+.sdStart{
+    animation: swipedownStart 2s ease-in-out forwards;
+}
+.suSelect{
+    animation: swipeupSelect 2s ease-in-out forwards;
+}
+.suStart{
+    animation: swipeupStart 2s ease-in-out forwards;
+}
+@keyframes swipedownSelect {
+    0%{
+        transform: translateY(0);
+      
+    }
+    100%{
+        transform: translateY(100vh);
+    }
+}
+@keyframes swipedownStart {
+    0%{
+        transform: translateY(0);
+      
+    }
+    100%{
+        transform: translateY(100vh);
+    }
+}
+@keyframes swipeupSelect {
+    0%{
+        transform: translateY(100vh);
+      
+    }
+    100%{
+        transform: translateY(0);
+    }
+    
+}
+@keyframes swipeupStart {
+    0%{
+        transform: translateY(100vh);
+      
+    }
+    100%{
+        transform: translateY(0);
+    }
+    
+}

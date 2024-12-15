@@ -1,149 +1,187 @@
-#menuPane{
-    background-color: red;
-    width: 30vw;
-    height: 98vh;
-    z-index: 4;    
-    border-radius:0 20px 20px  0;
-    border: black solid 5px;
-    margin-left: -31vw;
-    /* position: ; */
-} 
-
-#startPane{ 
+/* #menuPane {
+  background-color: red;
+  width: 30vw;
+  height: 98vh;
+  z-index: 4;
+  border-radius: 0 20px 20px 0;
+  border: black solid 5px;
+  margin-left: -31vw;
+  /* position: ; 
+} */
+.main{
     position: absolute;
-    background-color: black;
-    width: 100vw;
-    height: 100vh;
-    z-index: 3; 
 }
-#close{
-    width: 20px;
-    height: 20px;
-    margin-left: 27vw;
-    margin-top: 2vh;
-    background-color: transparent;
-    border: none;
+#startPane {
+  position: absolute;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
 }
-#close:hover{
-    text-shadow: blueviolet ;
+#close {
+  width: 20px;
+  height: 20px;
+  margin-left: 27vw;
+  margin-top: 2vh;
+  background-color: transparent;
+  border: none;
+}
+#close:hover {
+  text-shadow: blueviolet;
 }
 #menuB {
-    margin: 10px;
-    /* margin-top: -50px; */
-    position: relative;
+  /* margin: 10px; */
+  /* position: relative; */
+  width: 50px;
+  height: 50px;
+  display: block;
+  /* flex-direction: row-reverse; */
+  background-color: white;
+  border-radius: 5px;
+  align-items: center;
+  z-index: 5;
+  /* animation: startToSelection 0.75s ease-in; */
+}
+
+#start {
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(108, 65, 65);
+  background-size: contain;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+#container2 {
+  margin-left: 100vw;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: none;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+.x {
+  width: 100vw;
+  height: 100vh;
+
+}
+#select {
+  margin-top: -100vh;
+  width: 100vw;
+  height: 100vh;
+  background-color: aqua;
+  position: absolute;
+  z-index: 3;
+}
+div {
+  position: absolute;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+.sdSelect {
+  animation: swipedownSelect 2s ease-in-out forwards;
+}
+.sdStart {
+  animation: swipedownStart 2s ease-in-out forwards;
+}
+.suSelect {
+  animation: swipeupSelect 2s ease-in-out forwards;
+}
+.suStart {
+  animation: swipeupStart 2s ease-in-out forwards;
+}
+.srContainer {
+  animation: swipeRightContainer 2s ease-in-out forwards;
+}
+.srContainer2 {
+  animation: swipeRightContainer2 2s ease-in-out forwards;
+}
+.slContainer {
+  animation: swipeLeftContainer 2s ease-in-out forwards;
+}
+.slContainer2 {
+  animation: swipeLeftContainer2 2s ease-in-out forwards;
+}
+#ok{
     width: 50px;
     height: 50px;
-    display: block;
-    flex-direction: row-reverse;
-    background-color: white;
-    border-radius: 5px;
-    align-items: center;
-    z-index: 5;
-    /* animation: startToSelection 0.75s ease-in; */
 }
-#doorPane{
-    background-color: rgb(148, 238, 130);
-    width: 100vw;
-    height: 100vh;
-    z-index: 4;
-    display: none;
+#confirm {
+  width: 100px;
+  height: 100px;
 }
-.box{
-    position: relative;
-    width: 30px;
-    height: 5px;
-    margin-top: 5px;
-    margin-left: 3px;
-    margin-bottom: 3px;
-    background-color: black;
-    border-radius: 2px;
-}
-#start{
-    z-index: 1; 
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(108, 65, 65);
-    background-size:contain;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}  
-.mountain{
-    position: relative;
-    margin-top: 0vh;
-    width: 100vw;
-    height: 70vh;
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: 100vh;
-    margin-top: -31vh;
-} 
-.container{
-    width: 100vw;
-    height: 100vh;
-}
-#select{
-    margin-top:-100vh ;
-    width: 100vw;
-    height: 100vh;
-    background-color: aqua;
-    position: absolute;
-    z-index: 3;
-}
-div{
-    position: absolute;
-}
-html, body{
-    padding: 0;
-    margin: 0;
-}
-.sdSelect{
-    animation: swipedownSelect 2s ease-in-out forwards;
-}
-.sdStart{
-    animation: swipedownStart 2s ease-in-out forwards;
-}
-.suSelect{
-    animation: swipeupSelect 2s ease-in-out forwards;
-}
-.suStart{
-    animation: swipeupStart 2s ease-in-out forwards;
-}
+
 @keyframes swipedownSelect {
-    0%{
-        transform: translateY(0);
-      
-    }
-    100%{
-        transform: translateY(100vh);
-    }
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
 }
 @keyframes swipedownStart {
-    0%{
-        transform: translateY(0);
-      
-    }
-    100%{
-        transform: translateY(100vh);
-    }
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
 }
 @keyframes swipeupSelect {
-    0%{
-        transform: translateY(100vh);
-      
-    }
-    100%{
-        transform: translateY(0);
-    }
-    
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 @keyframes swipeupStart {
-    0%{
-        transform: translateY(100vh);
-      
-    }
-    100%{
-        transform: translateY(0);
-    }
-    
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes swipeRightContainer {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+@keyframes swipeRightContainer2 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
+}
+@keyframes swipeLeftContainer {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+@keyframes swipeLeftContainer2 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
 }

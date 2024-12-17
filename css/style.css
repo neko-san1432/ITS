@@ -30,17 +30,14 @@
   text-shadow: blueviolet;
 }
 #menuB {
-  /* margin: 10px; */
-  /* position: relative; */
+  margin: 10px;
   width: 50px;
   height: 50px;
   display: block;
-  /* flex-direction: row-reverse; */
   background-color: white;
   border-radius: 5px;
   align-items: center;
   z-index: 5;
-  /* animation: startToSelection 0.75s ease-in; */
 }
 
 #start {
@@ -73,7 +70,7 @@
 
 }
 #select {
-  margin-top: -100vh;
+  /* margin-top: -100vh; */
   width: 100vw;
   height: 100vh;
   background-color: aqua;

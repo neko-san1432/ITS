@@ -1,15 +1,5 @@
-/* #menuPane {
-  background-color: red;
-  width: 30vw;
-  height: 98vh;
-  z-index: 4;
-  border-radius: 0 20px 20px 0;
-  border: black solid 5px;
-  margin-left: -31vw;
-  /* position: ; 
-} */
-.main{
-    position: absolute;
+.main {
+  position: absolute;
 }
 #startPane {
   position: absolute;
@@ -49,6 +39,15 @@
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  position: absolute;
+  padding: 0;
+}
+#login{
+  z-index: 10;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  position:absolute;
 }
 #container2 {
   margin-left: 100vw;
@@ -58,7 +57,13 @@
   position: absolute;
   display: none;
 }
-
+#sky {
+  margin-top: -100px;
+  height: 200px;
+  background-color: black;
+  width: 100vw;
+  z-index: 4;
+}
 .container {
   width: 100vw;
   height: 100vh;
@@ -67,15 +72,14 @@
 .x {
   width: 100vw;
   height: 100vh;
-
 }
 #select {
-  /* margin-top: -100vh; */
+  margin-top: -100vh;
   width: 100vw;
   height: 100vh;
   background-color: aqua;
   position: absolute;
-  z-index: 3;
+  z-index: 1;
 }
 div {
   position: absolute;
@@ -91,11 +95,17 @@ body {
 .sdStart {
   animation: swipedownStart 2s ease-in-out forwards;
 }
+.sdSky {
+  animation: swipedownSky 2s ease-in-out forwards;
+}
 .suSelect {
   animation: swipeupSelect 2s ease-in-out forwards;
 }
 .suStart {
   animation: swipeupStart 2s ease-in-out forwards;
+}
+.suSky {
+  animation: swipeupSky 2s ease-in-out forwards;
 }
 .srContainer {
   animation: swipeRightContainer 2s ease-in-out forwards;
@@ -109,15 +119,39 @@ body {
 .slContainer2 {
   animation: swipeLeftContainer2 2s ease-in-out forwards;
 }
-#ok{
-    width: 50px;
-    height: 50px;
+
+#ok {
+  width: 50px;
+  height: 50px;
 }
 #confirm {
   width: 100px;
   height: 100px;
 }
+#tn,
+#tp,
+#mp,
+#mn,
+#bp,
+#bn {
+  width: 100px;
+  height: 100px;
+}
+#person {
+  border: 1px solid black;
+  width: 100px;
+  height: 200px;
+  position: absolute;
+}
 
+#content {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  display: none;
+}
 @keyframes swipedownSelect {
   0% {
     transform: translateY(0);
@@ -127,6 +161,14 @@ body {
   }
 }
 @keyframes swipedownStart {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+@keyframes swipedownSky {
   0% {
     transform: translateY(0);
   }
@@ -148,6 +190,14 @@ body {
   }
   100% {
     transform: translateY(0);
+  }
+}
+@keyframes swipeupSky {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100vh);
   }
 }
 @keyframes swipeRightContainer {

@@ -14,6 +14,7 @@ let tp = document.getElementById("tp");
 let mp = document.getElementById("mp");
 let bp = document.getElementById("bp");
 let con = document.getElementById("content");
+let usernameTA = document.getElementById("userName");
 startb.addEventListener('click', () => {
     mb.disabled = true;
     startb.disabled = true;
@@ -61,6 +62,7 @@ mb.addEventListener('click', () => {
 
     }, { once: true });
 });
+
 oks.addEventListener('click', () => {
     container.style.display = "block";
     container.classList.add('slContainer');
@@ -106,6 +108,11 @@ confirm.addEventListener('click', () => {
         container.style.marginLeft = "-100vw"
         container2.style.marginLeft = "0vw"
     }, { once: true });
+})
+usernameTA.addEventListener('input',()=>{
+    let x = usernameTA.value;
+
+
 })
 // tn.addEventListener('click',() => {})
 // tp.addEventListener('click',() => {})

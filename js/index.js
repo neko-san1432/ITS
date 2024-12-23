@@ -99,6 +99,7 @@ oks.addEventListener('click', () => {
     }, { once: true });
 })
 confirm.addEventListener('click', () => {
+    //check db if the username is available
     container2.style.display = "block";
     container.classList.add('srContainer');
     container2.classList.add('srContainer2');
@@ -111,7 +112,6 @@ confirm.addEventListener('click', () => {
 })
 usernameTA.addEventListener('input',()=>{
     let x = usernameTA.value;
-
 
 })
 // tn.addEventListener('click',() => {})

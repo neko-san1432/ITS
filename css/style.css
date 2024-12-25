@@ -1,4 +1,21 @@
-.main {
+/*========== 
+  Containers 
+  ==========*/
+#container2 {
+  /* margin-left: 100vw; */
+  /* display: flex; */
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center center;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
   position: absolute;
 }
 #startPane {
@@ -8,6 +25,68 @@
   height: 100vh;
   z-index: 3;
 }
+.previous,
+.next {
+  position: relative;
+  width: auto;
+  height: auto;
+  /* border: solid; */
+  display: flex;
+  flex-direction: column;
+}
+#questions {
+  width: 100vw;
+  height: 50vh;
+  margin-top: 50vh;
+}
+/* #sky {
+  margin-top: -100px;
+  height: 200px;
+  background-color: black;
+  width: 100vw;
+  z-index: 4;
+} */
+.choices {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.choose {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw;
+  height: 100vh;
+  /* border: solid 1px; */
+}
+#select {
+  /* margin-top: -100vh; */
+  width: 100vw;
+  height: 100vh;
+  background-color: aqua;
+  position: absolute;
+  z-index: 1;
+  display: none;
+}
+.item {
+  display: flex;
+  width: 100vw;
+  height: 80vh;
+  flex-direction: column-reverse;
+}
+.navB{
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: auto;
+  
+}
+
+/*==================
+  Element Properties 
+  ==================*/
 #close {
   width: 20px;
   height: 20px;
@@ -19,17 +98,13 @@
 #close:hover {
   text-shadow: blueviolet;
 }
-#menuB {
-  margin: 10px;
-  width: 50px;
-  height: 50px;
-  display: block;
+#login {
+  z-index: 10;
+  width: 100px;
+  height: 100px;
   background-color: white;
-  border-radius: 5px;
-  align-items: center;
-  z-index: 5;
+  position: absolute;
 }
-
 #start {
   z-index: 1;
   width: 100vw;
@@ -42,97 +117,95 @@
   position: absolute;
   padding: 0;
 }
-#login{
-  z-index: 10;
-  width: 100px;
-  height: 100px;
-  background-color: white;
-  position:absolute;
-}
-.textCont{
-  width: 100vw;
-  height: 300px;
-}
-#container2 {
-  /* margin-left: 100vw; */
-  background-color: black;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-}
-/* #sky {
-  margin-top: -100px;
-  height: 200px;
-  background-color: black;
-  width: 100vw;
-  z-index: 4;
-} */
-#question{
-  width: 100vw;
-  height: 100vh;
-  border: solid rebeccapurple 1px;
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center center;
-}
-#q1, #q2{
-  width: 100vw;
-  height: 50vh;
-  background-color: white;
-  z-index: 1;
-  /* border: solid; */
-}
-#q2{
-  margin-left: 100vw;
-  background-color: rebeccapurple;
-}
-.container {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-}
-.choose{
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  width: 100vw;
-  height: 100vh;
-  /* border: solid 1px; */
-}
-.x {
-  width: 100vw;
-  height: 100vh;
-}
-
-.previous, .next{
-  position: relative;
-  width: auto;
-  height: auto;
-  /* border: solid; */
+.userName {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
 }
-#select {
-  /* margin-top: -100vh; */
+#content {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
   width: 100vw;
   height: 100vh;
-  background-color: aqua;
-  position: absolute;
-  z-index: 1;
+  z-index: 3;
   display: none;
 }
-div {
+#menuB {
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  display: block;
+  background-color: white;
+  border-radius: 5px;
+  align-items: center;
+  z-index: 5;
+}
+#a,
+#b,
+#c,
+#d {
+  position: relative;
+  width: 45vw;
+  height: 8.5vh;
+}
+.cSub {
+  /* border: solid red; */
+  width: auto;
+  height: auto;
+  position: relative;
+}
+#tn,
+#tp,
+#mp,
+#mn,
+#bp,
+#bn {
+  width: 100px;
+  height: 100px;
+}
+#q1 {
+  width: 100vw;
+  height: 30vh;
+  background-color: white;
+  z-index: 1;
+  /* border: solid; */
+  /* margin-top: 50vh; */
+  margin-top: 20vh;
+}
+#msgAlert {
+  display: none;
+  color: white;
+}
+#ok {
+  width: 50px;
+  height: 50px;
+}
+#confirm {
+  width: 100px;
+  height: 100px;
+}
+#person {
+  border: 1px solid black;
+  width: 150px;
+  height: 300px;
   position: absolute;
 }
-html,
-body {
-  padding: 0;
-  margin: 0;
+.test {
+  width: 100vw;
+  text-align: center;
+  height: auto;
+  font-size: 2em;
 }
+#return2{
+  width: 50px;
+  height: 50px;
+}
+
+/*==========
+  Animations 
+  ==========*/
 .sdSelect {
   animation: swipedownSelect 2s ease-in-out forwards;
 }
@@ -162,57 +235,6 @@ body {
 }
 .slContainer2 {
   animation: swipeLeftContainer2 2s ease-in-out forwards;
-}
-
-#ok {
-  width: 50px;
-  height: 50px;
-}
-#confirm {
-  width: 100px;
-  height: 100px;
-}
-#tn,
-#tp,
-#mp,
-#mn,
-#bp,
-#bn {
-  width: 100px;
-  height: 100px;
-}
-#person {
-  border: 1px solid black;
-  width: 150px;
-  height: 300px;
-  position: absolute;
-}
-.test{
-  width: 100vw;
-  text-align: center;
-  height: auto;
-  font-size: 2em;
-}
-.item{
-  display: flex;
-  width: 100vw;
-  height: 80vh;
-  flex-direction: column-reverse;
-}
-.userName{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
-}
-#content {
-  position: absolute;
-  background-color: rgb(255, 255, 255);
-  width: 100vw;
-  height: 100vh;
-  z-index: 3;
-  display: none;
 }
 @keyframes swipedownSelect {
   0% {
@@ -294,3 +316,49 @@ body {
     transform: translateX(100vw);
   }
 }
+
+
+/*===================
+  For General Purpose
+  ===================*/
+div {
+  position: absolute;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+.widthONLY {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -59,7 +59,6 @@ mb.addEventListener('click', () => {
         startPane.style.marginTop = "0vh"
         sky.style.marginTop = "-100px"
         sky.style.height = "200px"
-
     }, { once: true });
 });
 
@@ -112,7 +111,12 @@ confirm.addEventListener('click', () => {
 })
 usernameTA.addEventListener('input',()=>{
     let x = usernameTA.value;
-
+    if(x == ""){
+        confirm.disabled = true;
+    }else
+    {
+        confirm.disable = false;
+    }
 })
 // tn.addEventListener('click',() => {})
 // tp.addEventListener('click',() => {})

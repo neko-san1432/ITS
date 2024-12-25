@@ -30,8 +30,8 @@
           <div class="userName">
             <p>Enter username</p>
             <textarea name="username" id="userName"></textarea>
-            <br \ />
-            <button id="confirm">Confirm</button>
+            <br />
+            <button id="confirm" disabled>Confirm</button>
           </div>
         </div>
       </div>
@@ -42,13 +42,32 @@
       <div id="content"></div>
     </div> -->
     <div id="container2">
-      <div id ="questions">
+      <div id="questions">
         <div id="q1"></div>
-        <div id="q2"></div>
+        <div class="choices">
+          <div class="cSub">
+            <button id="a">a</button>
+            <br /><br />
+            <button id="b">b</button>
+          </div>
+          <div class="cSub">
+            <button id="c">c</button>
+            <br /><br />
+            <button id="d">d</button>
+          </div>
+        </div>
       </div>
-      <button id="next">Next</button>
-      <button id="previous">previous</button>
-      <button id="ok">ok</button>
+      <div class="navB">
+        <button id="previous">previous</button>
+        <button id="next">Next</button>
+      </div>
+      <p id = "msgAlert">Some questions are not answered yet</p> 
+      <br>
+      <div class="widthONLY">
+        <button id="return2"></button>
+        <br>
+        <button id="ok">ok</button>
+      </div>
     </div>
   </body>
 </html>

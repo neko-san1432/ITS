@@ -8,12 +8,15 @@
   </head>
 
   <body>
+    <!-- <div id="blurPane"></div> -->
     <div id="container">
       <div id="sky"></div>
       <div id="select">
-        <button id="menuB"></button>
-        <div class="test">Customize Character</div>
-        <div class="item">
+        <div style="z-index: 2;">
+          <button id="menuB"></button>
+        </div>
+        <div class="test" style="margin-top: 10px;">Customize Character</div>
+        <div class="item" style="margin-top: 10px;">
           <div class="choose">
             <div class="previous">
               <button id="tp">tp</button>
@@ -35,15 +38,16 @@
           </div>
         </div>
       </div>
+      <div id="startPane">
+        <!-- <button id="login">sdfdfsf</button> -->
+        <button id="start"></button>
+        <div id="content"></div>
+      </div>
     </div>
-    <!-- <div id="startPane">
-      <button id="login">sdfdfsf</button>
-      <button id="start"></button>
-      <div id="content"></div>
-    </div> -->
     <div id="container2">
+      <div id="notice"></div>
       <div id="questions">
-        <div id="q1"></div>
+        <div id="q1">1</div>
         <div class="choices">
           <div class="cSub">
             <button id="a">a</button>
@@ -61,12 +65,12 @@
         <button id="previous">previous</button>
         <button id="next">Next</button>
       </div>
-      <p id = "msgAlert">Some questions are not answered yet</p> 
-      <br>
+      <p id="msgAlert">This question should not be left empty</p>
+      <br />
       <div class="widthONLY">
-        <button id="return2">return</button>
-        <br>
-        <button id="ok">ok</button>
+        <button id="return">return</button>
+        <br />
+        <button id="ok" disabled>ok</button>
       </div>
     </div>
   </body>

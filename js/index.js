@@ -2,7 +2,7 @@ let startb = document.getElementById("start");
 let mb = document.getElementById("menuB");
 let selectionPane = document.getElementById("select");
 let startPane = document.getElementById("startPane");
-let confirm = document.getElementById("confirm");
+let cfirm = document.getElementById("confirm");
 let container = document.getElementById("container");
 let container2 = document.getElementById("container2");
 let oks = document.getElementById("ok");
@@ -15,6 +15,21 @@ let mp = document.getElementById("mp");
 let bp = document.getElementById("bp");
 let con = document.getElementById("content");
 let usernameTA = document.getElementById("userName");
+let nextque = document.getElementById("next");
+let prevque = document.getElementById("previous");
+let queCout = 0;
+let pretest = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+let ans_pretest = ["a", "b", "c", "d", "a", "b", "c", "d", "a", "b"]
+let user_anspretest = ["", "", "", "", "", "", "", "", "", ""];
+let choice_a = document.getElementById("a");
+let choice_b = document.getElementById("b");
+let choice_c = document.getElementById("c");
+let choice_d = document.getElementById("d");
+let questionPane = document.getElementById("q1");
+let k = document.getElementById("ok");
+let notice = document.getElementById("msgAlert");
+let returns = document.getElementById("return");
+let transitionPane = document.getElementById("blurPane");
 startb.addEventListener('click', () => {
     mb.disabled = true;
     startb.disabled = true;
@@ -47,7 +62,7 @@ mb.addEventListener('click', () => {
     startPane.classList.add('suStart');
     sky.classList.add('suSky');
     sky.style.height = "200px"
-
+    console.log('clicked')
     selectionPane.addEventListener('animationend', () => {
         selectionPane.classList.remove('suSelect');
         startPane.classList.remove('suStart');
@@ -70,13 +85,13 @@ oks.addEventListener('click', () => {
         startb.style.display = "none";
         con.style.display = "block";
         selectionPane.style.display = "block";
+        selectionPane.style.marginTop = "-100vh"
+        sky.style.height = "200px"
         mb.disabled = true;
         startb.disabled = true;
-        selectionPane.style.marginTop = "-100vh"
         selectionPane.classList.add('suSelect');
         startPane.classList.add('suStart');
         sky.classList.add('suSky');
-        sky.style.height = "200px"
         selectionPane.addEventListener('animationend', () => {
             selectionPane.classList.remove('suSelect');
             startPane.classList.remove('suStart');
@@ -90,14 +105,14 @@ oks.addEventListener('click', () => {
         }, { once: true });
     }, 5000)
     container2.addEventListener('animationend', () => {
-        container2.style.display = "none"
         container.classList.remove('slContainer');
         container2.classList.remove('slContainer2');
+        container2.style.display = "none"
         container2.style.marginLeft = "100vw"
         container.style.marginLeft = "0vw"
     }, { once: true });
 })
-confirm.addEventListener('click', () => {
+cfirm.addEventListener('click', () => {
     //check db if the username is available
     container2.style.display = "block";
     container.classList.add('srContainer');
@@ -109,15 +124,121 @@ confirm.addEventListener('click', () => {
         container2.style.marginLeft = "0vw"
     }, { once: true });
 })
-usernameTA.addEventListener('input',()=>{
+usernameTA.addEventListener('input', () => {
     let x = usernameTA.value;
-    if(x == ""){
-        confirm.disabled = true;
-    }else
-    {
-        confirm.disable = false;
+    if (x == "") {
+        cfirm.disabled = true;
+        console.log("ye")
+    } else {
+        cfirm.disabled = false;
+        console.log("no")
     }
 })
+nextque.addEventListener('click', () => {
+    if (queCout != 9) {
+        if (user_anspretest[queCout] == "") {
+            notice.style.display = "block"
+            setTimeout(() => {
+                notice.style.display = "none"
+                // clearInterval(this);
+            }, 2000)
+
+            return;
+        }
+        queCout++;
+        questionPane.textContent = pretest[queCout];
+        console.log(queCout)
+        selectedAnswer(user_anspretest[queCout]);
+        if (queCout == 8) {
+            nextque.style.display = "none";
+        }
+        if (getComputedStyle(prevque).display == "none") {
+            prevque.style.display = "block";
+        }
+    }
+});
+prevque.addEventListener('click', () => {
+    if (queCout != 0) {
+        queCout--;
+        questionPane.textContent = pretest[queCout];
+        console.log(queCout)
+        selectedAnswer(user_anspretest[queCout]);
+        if (queCout == 1) {
+            prevque.style.display = "none"
+        }
+        if (getComputedStyle(nextque).display == "none") {
+            nextque.style.display = "block";
+        }
+    }
+});
+choice_a.addEventListener("click", () => {
+    clearAnswerState();
+    user_anspretest[queCout] = "a";
+    choice_a.style.backgroundColor = "blue";
+    answeredAll();
+    //add highlight to a
+})
+choice_b.addEventListener("click", () => {
+    clearAnswerState();
+    user_anspretest[queCout] = "b";
+    choice_b.style.backgroundColor = "blue";
+    answeredAll();
+    //add highlight to b
+})
+choice_c.addEventListener("click", () => {
+    clearAnswerState();
+    user_anspretest[queCout] = "c";
+    choice_c.style.backgroundColor = "blue";
+    answeredAll();
+    //add highlight to c
+})
+choice_d.addEventListener("click", () => {
+    clearAnswerState();
+    user_anspretest[queCout] = "d";
+    choice_d.style.backgroundColor = "blue";
+    answeredAll();
+    //add highlight to d
+})
+returns.addEventListener("click", () => {
+    transitionPane.classList.add("returnTransition");
+    selectionPane.style.display = "none";
+    selectionPane.style.marginTop = "-100vh"
+    sky.style.height = "200px"
+    container2.style.display = "none"
+    container2.style.marginLeft = "100vw"
+    container.style.marginLeft = "0vw"
+    startPane.style.marginTop = "0vh"
+})
+function selectedAnswer(answer) {
+    clearAnswerState();
+    if (answer == "a") {
+        choice_a.style.backgroundColor = "blue";
+    }
+    else if (answer == "b") {
+        choice_b.style.backgroundColor = "blue";
+    }
+    else if (answer == "c") {
+        choice_c.style.backgroundColor = "blue";
+    }
+    else if (answer == "d") {
+        choice_d.style.backgroundColor = "blue";
+    }
+}
+function answeredAll() {
+    for (let i = 0; i <= 9; i++) {
+        if (user_anspretest[i] == "") {
+            break;
+        } else if (i == 9) {
+            k.disabled = false;
+        }
+    }
+}
+function clearAnswerState() {
+    choice_a.style.backgroundColor = "white";
+    choice_b.style.backgroundColor = "white";
+    choice_c.style.backgroundColor = "white";
+    choice_d.style.backgroundColor = "white";
+}
 // tn.addEventListener('click',() => {})
 // tp.addEventListener('click',() => {})
 // mn.addEventListener('click',() => {})

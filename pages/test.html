@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dynamic Textbox Check</title>
+</head>
+<body>
+  <input type="text" id="myTextbox" placeholder="Type something here">
+  <p id="message"></p>
+
+  <script>
+    const textbox = document.getElementById("myTextbox");
+    const message = document.getElementById("message");
+
+    // Add an input event listener to the textbox
+    textbox.addEventListener("input", () => {
+      if (textbox.value.trim() === "") {
+        message.textContent = "The textbox is empty.";
+      } else {
+        message.textContent = "The textbox is not empty.";
+      }
+    });
+  </script>
+</body>
+</html>

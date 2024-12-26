@@ -2,8 +2,8 @@
   Containers 
   ==========*/
 #container2 {
-  /* margin-left: 100vw; */
-  /* display: flex; */
+  margin-left: 100vw;
+  display: none;
   position: absolute;
   flex-direction: column;
   align-items: center;
@@ -25,6 +25,15 @@
   height: 100vh;
   z-index: 3;
 }
+#previous,
+#next {
+  position: relative;
+  width: auto;
+  height: auto;
+  /* border: solid; */
+  display: flex;
+  flex-direction: column;
+}
 .previous,
 .next {
   position: relative;
@@ -33,6 +42,9 @@
   /* border: solid; */
   display: flex;
   flex-direction: column;
+}
+#previous{
+  display: none;
 }
 #questions {
   width: 100vw;
@@ -59,31 +71,45 @@
   justify-content: space-around;
   width: 100vw;
   height: 100vh;
+  /* background-color: aquamarine; */
   /* border: solid 1px; */
 }
 #select {
-  /* margin-top: -100vh; */
+  margin-top: -100vh;
   width: 100vw;
   height: 100vh;
   background-color: aqua;
   position: absolute;
   z-index: 1;
-  display: none;
+  display: block;
 }
 .item {
   display: flex;
   width: 100vw;
   height: 80vh;
   flex-direction: column-reverse;
+  /* border: solid; */
 }
 .navB{
   display: flex;
   justify-content: space-between;
   width: 100vw;
   height: auto;
-  
 }
-
+#blurPane{
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  opacity: 0;
+}
+#notice{
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgb(0, 75, 50);
+  display: none;
+}
 /*==================
   Element Properties 
   ==================*/
@@ -140,7 +166,7 @@
   background-color: white;
   border-radius: 5px;
   align-items: center;
-  z-index: 5;
+  z-index: 6;
 }
 #a,
 #b,
@@ -171,8 +197,9 @@
   background-color: white;
   z-index: 1;
   /* border: solid; */
-  /* margin-top: 50vh; */
   margin-top: 20vh;
+  text-align: center;
+  justify-content: center;
 }
 #msgAlert {
   display: none;
@@ -181,6 +208,7 @@
 #ok {
   width: 50px;
   height: 50px;
+  
 }
 #confirm {
   width: 100px;
@@ -194,11 +222,12 @@
 }
 .test {
   width: 100vw;
+  /* border: solid 1px black; */
   text-align: center;
   height: auto;
   font-size: 2em;
 }
-#return2{
+#return{
   width: 50px;
   height: 50px;
 }
@@ -236,6 +265,10 @@
 .slContainer2 {
   animation: swipeLeftContainer2 2s ease-in-out forwards;
 }
+.returnTransition{
+  animation: cancel 1s ease-in-out forwards;
+}
+
 @keyframes swipedownSelect {
   0% {
     transform: translateY(0);
@@ -314,6 +347,18 @@
   }
   100% {
     transform: translateX(100vw);
+  }
+}
+@keyframes cancel {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+
+  100%{
+    opacity: 0;
   }
 }
 

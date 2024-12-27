@@ -7,12 +7,11 @@ let container = document.getElementById("container");
 let container2 = document.getElementById("container2");
 let oks = document.getElementById("ok");
 let sky = document.getElementById("sky");
-let tn = document.getElementById("tn");
-let mn = document.getElementById("mn");
-let bn = document.getElementById("bn");
-let tp = document.getElementById("tp");
-let mp = document.getElementById("mp");
-let bp = document.getElementById("bp");
+let fe = document.getElementById("facialExp");
+let h = document.getElementById("hair");
+let g = document.getElementById("gender");
+let ts = document.getElementById("tshirt");
+let sc = document.getElementById("skincolor");
 let con = document.getElementById("content");
 let usernameTA = document.getElementById("userName");
 let nextque = document.getElementById("next");
@@ -30,12 +29,31 @@ let k = document.getElementById("ok");
 let notice = document.getElementById("msgAlert");
 let returns = document.getElementById("return");
 let transitionPane = document.getElementById("blurPane");
+fe.addEventListener('click',() => {
+    document.getElementById('fp').classList.add('openPane')
+})
+h.addEventListener('click',() => {
+    document.getElementById('hp').classList.add('openPane')
+})
+g.addEventListener('click',() => {
+    document.getElementById('gp').classList.add('openPane')
+})
+ts.addEventListener('click',() => {
+    document.getElementById('tp').classList.add('openPane')
+})
+sc.addEventListener('click',() => {
+    document.getElementById('sp').classList.add('openPane')
+})
+function closeAll(){
+    
+}
 startb.addEventListener('click', () => {
     mb.disabled = true;
     startb.disabled = true;
     selectionPane.classList.add('sdSelect');
     startPane.classList.add('sdStart');
     sky.classList.add('sdSky');
+    selectionPane.style.display = 'block';
     startPane.addEventListener('animationend', () => {
         startPane.style.display = "none";
         selectionPane.classList.remove('sdSelect');
@@ -53,7 +71,7 @@ startb.addEventListener('click', () => {
 
 mb.addEventListener('click', () => {
     startPane.style.display = "block";
-    selectionPane.style.display = "block";
+    // selectionPane.style.display = "block";
     mb.disabled = true;
     startb.disabled = true;
     selectionPane.style.marginTop = "-100vh"
@@ -199,16 +217,24 @@ choice_d.addEventListener("click", () => {
     answeredAll();
     //add highlight to d
 })
-returns.addEventListener("click", () => {
-    transitionPane.classList.add("returnTransition");
-    selectionPane.style.display = "none";
-    selectionPane.style.marginTop = "-100vh"
-    sky.style.height = "200px"
-    container2.style.display = "none"
-    container2.style.marginLeft = "100vw"
-    container.style.marginLeft = "0vw"
-    startPane.style.marginTop = "0vh"
-})
+returns.addEventListener('click', () => {
+    transitionPane.classList.add('returnTransition');
+    transitionPane.style.zIndex = 3;
+    setTimeout(() => {
+        container.style.marginLeft = '0vw';
+        container2.style.marginLeft = '100vw';
+        selectionPane.style.marginTop = '-100vh';
+        startPane.style.marginTop = '0vh';
+        startPane.style.display = 'block';
+        selectionPane.style.display = 'none';
+        container2.style.display = 'none';
+        usernameTA.value = '';
+    }, 1500)
+    setTimeout(()=>{
+        transitionPane.style.zIndex= -1;
+        transitionPane.remove('returnTransition')
+    },1750)
+});
 function selectedAnswer(answer) {
     clearAnswerState();
     if (answer == "a") {
@@ -239,9 +265,3 @@ function clearAnswerState() {
     choice_c.style.backgroundColor = "white";
     choice_d.style.backgroundColor = "white";
 }
-// tn.addEventListener('click',() => {})
-// tp.addEventListener('click',() => {})
-// mn.addEventListener('click',() => {})
-// mp.addEventListener('click',() => {})
-// bn.addEventListener('click',() => {})
-// bp.addEventListener('click',() => {})

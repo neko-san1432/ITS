@@ -24,6 +24,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 3;
+  display: none;
 }
 #previous,
 #next {
@@ -64,30 +65,40 @@
   justify-content: space-between;
 }
 .choose {
-  position: absolute;
+  position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  width: 100vw;
+  justify-content: center;
+  width: calc(100vw / 3);
   height: 100vh;
   /* background-color: aquamarine; */
   /* border: solid 1px; */
 }
+.usernamePane{
+  position: absolute;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  margin-left:100vw;
+  background-color: brown;
+}
 #select {
-  margin-top: -100vh;
+  /* margin-top: -100vh; */
   width: 100vw;
   height: 100vh;
   background-color: aqua;
   position: absolute;
   z-index: 1;
   display: block;
+    /* border: solid; */
+
 }
 .item {
   display: flex;
   width: 100vw;
   height: 80vh;
-  flex-direction: column-reverse;
+  flex-direction: row;
   /* border: solid; */
 }
 .navB{
@@ -100,7 +111,7 @@
   background-color: black;
   width: 100vw;
   height: 100vh;
-  z-index: 3;
+  z-index: -1;
   opacity: 0;
 }
 #notice{
@@ -108,6 +119,26 @@
   height: 100vh;
   z-index: 2;
   background-color: rgb(0, 75, 50);
+  display: none;
+}
+.leftw,.rightw{
+  margin-top: 15vh;
+  position: relative;
+  height: 60vh;
+  width: calc(100vw / 3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: solid; */
+}
+.list-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next row */
+  gap: 10px; 
+  border: solid black 1px;
+  width: 19.6vw;
+  height: 30vw;
   display: none;
 }
 /*==================
@@ -130,6 +161,7 @@
   height: 100px;
   background-color: white;
   position: absolute;
+  /* display: none; */
 }
 #start {
   z-index: 1;
@@ -142,6 +174,7 @@
   background-attachment: fixed;
   position: absolute;
   padding: 0;
+  /* display: none; */
 }
 .userName {
   display: flex;
@@ -182,14 +215,13 @@
   height: auto;
   position: relative;
 }
-#tn,
-#tp,
-#mp,
-#mn,
-#bp,
-#bn {
-  width: 100px;
-  height: 100px;
+#skincolor,
+#hair,
+#gender,
+#tshirt,
+#facialexp{
+  width: 20vw;
+  height: 30px;
 }
 #q1 {
   width: 100vw;
@@ -208,7 +240,6 @@
 #ok {
   width: 50px;
   height: 50px;
-  
 }
 #confirm {
   width: 100px;
@@ -218,9 +249,10 @@
   border: 1px solid black;
   width: 150px;
   height: 300px;
-  position: absolute;
+  position: relative;
 }
 .test {
+  position: relative; 
   width: 100vw;
   /* border: solid 1px black; */
   text-align: center;
@@ -231,7 +263,11 @@
   width: 50px;
   height: 50px;
 }
-
+#cfirmchara{
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
 /*==========
   Animations 
   ==========*/
@@ -266,7 +302,13 @@
   animation: swipeLeftContainer2 2s ease-in-out forwards;
 }
 .returnTransition{
-  animation: cancel 1s ease-in-out forwards;
+  animation: cancel 3s ease-in forwards;
+}
+.openCon{
+  animation: openPane 1s ease-in forwards;
+}
+.closeCon{
+  animation: closePane 1s ease-in forwards;
 }
 
 @keyframes swipedownSelect {
@@ -356,12 +398,26 @@
   50%{
     opacity: 1;
   }
-
   100%{
     opacity: 0;
   }
 }
-
+@keyframes openPane {
+  0%{
+    height: 0;
+  }
+  100%{
+    height: 30vw;
+  }
+}
+@keyframes closePane {
+  0%{
+    height: 0;
+  }
+  100%{
+    height: 0px;
+  }
+}
 
 /*===================
   For General Purpose

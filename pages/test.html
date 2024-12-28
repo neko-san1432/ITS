@@ -1,45 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive List</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    .list-container {
-      display: flex;
-      flex-wrap: wrap; /* Allows items to wrap to the next row */
-      gap: 10px; /* Spacing between items */
-    }
-    .list-item {
-      flex: 1 1 100px; /* Grow, shrink, and set a minimum width */
-      max-width: 200px; /* Optional: limit the width of each item */
-      padding: 10px;
-      text-align: center;
-      background: #007bff;
-      color: white;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Dropdown Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f3f4f6;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .dropdown-btn:hover {
+            background-color: #45a049;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 1;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                
+                transform: translateY(-10px);
+            }
+            to {
+
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown()">Dropdown</button>
+        <div class="dropdown-content" id="dropdown-content">
+            <a href="#option1">Option 1</a>
+            <a href="#option2">Option 2</a>
+            <a href="#option3">Option 3</a>
+        </div>
+    </div>
 
-<h2>Responsive List</h2>
-<div class="list-container">
-  <div class="list-item">Item 1</div>
-  <div class="list-item">Item 2</div>
-  <div class="list-item">Item 3</div>
-  <div class="list-item">Item 4</div>
-  <div class="list-item">Item 5</div>
-  <div class="list-item">Item 6</div>
-  <div class="list-item">Item 7</div>
-  <div class="list-item">Item 8</div>
-  <div class="list-item">Item 9</div>
-</div>
+    <script>
+        function toggleDropdown() {
+            const dropdownContent = document.getElementById('dropdown-content');
+            dropdownContent.classList.toggle('show');
+        }
 
+        // Close dropdown if clicked outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-btn')) {
+                const dropdowns = document.getElementsByClassName('dropdown-content');
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+            
+        }
+    </script>
 </body>
-</html>
+</html>aa

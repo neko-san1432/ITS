@@ -30,22 +30,22 @@ let notice = document.getElementById("msgAlert");
 let returns = document.getElementById("return");
 let transitionPane = document.getElementById("blurPane");
 fe.addEventListener('click',() => {
-    document.getElementById('fp').classList.add('openPane')
+    document.getElementById('fp').style.height = '30vh';
 })
 h.addEventListener('click',() => {
-    document.getElementById('hp').classList.add('openPane')
+    document.getElementById('hp').style.height = '30vh';
 })
 g.addEventListener('click',() => {
-    document.getElementById('gp').classList.add('openPane')
+    document.getElementById('gp').style.height = '30vh';
 })
 ts.addEventListener('click',() => {
-    document.getElementById('tp').classList.add('openPane')
+    document.getElementById('tp').style.height = '30vh';
 })
 sc.addEventListener('click',() => {
-    document.getElementById('sp').classList.add('openPane')
+    document.getElementById('sp').style.height = '30vh';
 })
 function closeAll(){
-    
+
 }
 startb.addEventListener('click', () => {
     mb.disabled = true;

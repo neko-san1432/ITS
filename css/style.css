@@ -138,8 +138,8 @@
   gap: 10px; 
   border: solid black 1px;
   width: 19.6vw;
-  height: 30vw;
-  display: none;
+  height: 0vh;
+  /* display: none; */
 }
 /*==================
   Element Properties 
@@ -404,18 +404,21 @@
 }
 @keyframes openPane {
   0%{
-    height: 0;
+    transform: scaleY(0vh);
+    /* height: 0; */
   }
   100%{
-    height: 30vw;
+    /* height: 30vh; */
+    transform: scaleY(30vh);
+
   }
 }
 @keyframes closePane {
   0%{
-    height: 0;
+    height: 30vh;
   }
   100%{
-    height: 0px;
+    height: 0vh;
   }
 }
 
@@ -435,6 +438,12 @@ body {
   height: auto;
   display: flex;
   flex-direction: row;
+}
+.fvh{
+  height: 100vh;
+}
+.fvw{
+  height: 100vw;
 }
 
 

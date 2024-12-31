@@ -309,6 +309,7 @@ const elements = {
 
 // Variables
 let questionIndex = 0;
+let prevOptSkin = 0;
 const pretestQuestions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 const correctAnswers = ["a", "b", "c", "d", "a", "b", "c", "d", "a", "b"];
 const userAnswers = Array(pretestQuestions.length).fill("");
@@ -345,28 +346,40 @@ function handlePaneAnimation(pane, className, display, callback) {
     }, { once: true });
 }
 function closeAll(name) {
-    if (name != 1) {
+    if (name == 1) {
         elements.facialPane.remove("openCon");
         elements.facialPane.classList.add("closeCon");
-        elements.facialPane.style.height = "0vh";
-    } if (name != 2) {
+        elements.facialPane.addEventListener('animationend', () => {
+            elements.facialPane.style.height = "0vh";
+        })
+    }
+    if (name == 2) {
         elements.hairPane.remove("openCon");
         elements.hairPane.classList.add("closeCon");
-        elements.hairPane.style.height = "0vh";
+        elements.hairPane.addEventListener('animationend', () => {
+            elements.hairPane.style.height = "0vh";
+        })
     }
-    if (name != 3) {
+    if (name == 3) {
         elements.genderPane.remove("openCon");
         elements.genderPane.classList.add("closeCon");
-        elements.genderPane.style.height = "0vh";
-    } if (name != 4) {
+        elements.genderPane.addEventListener('animationend', () => {
+            elements.genderPane.style.height = "0vh";
+        })
+    }
+    if (name == 4) {
         elements.shirtPane.remove("openCon");
         elements.shirtPane.classList.add("closeCon");
-        elements.shirtPane.style.height = "0vh";
+        elements.shirtPane.addEventListener('animationend', () => {
+            elements.shirtPane.style.height = "0vh";
+        })
     }
-    if (name != 5) {
+    if (name == 5) {
         elements.skinPane.remove("openCon");
         elements.skinPane.classList.add("closeCon");
-        elements.skinPane.style.height = "0vh";
+        elements.skinPane.addEventListener('animationend', () => {
+            elements.skinPane.style.height = "0vh";
+        })
     }
     console.log(name);
 }
@@ -374,29 +387,44 @@ function closeAll(name) {
 // Event Listeners
 ["click"].forEach((event) => {
     elements.facialExpression.addEventListener(event, () => {
-        closeAll(1); 
-        elements.facialPane.classList.add("openCon"); 
+        closeAll(prevOptSkin);
+        prevOptSkin = 1;
+        elements.facialPane.remove("openCon");
+        elements.facialPane.classList.add("openCon");
         elements.facialPane.style.height = "30vh";
     });
-    elements.hair.addEventListener(event, () => { 
-        closeAll(2); 
-        elements.hairPane.classList.add("openCon"); 
-        elements.hairPane.style.height = "30vh"; 
+    elements.hair.addEventListener(event, () => {
+        closeAll(prevOptSkin);
+        prevOptSkin = 2;
+        elements.hairPane
+            .remove("openCon");
+
+        elements.hairPane.classList.add("openCon");
+        elements.hairPane.style.height = "30vh";
     });
-    elements.gender.addEventListener(event, () => { 
-        closeAll(3); 
-        elements.genderPane.classList.add("openCon"); 
-        elements.genderPane.style.height = "30vh"; 
+    elements.gender.addEventListener(event, () => {
+        closeAll(prevOptSkin);
+        prevOptSkin = 3;
+        elements.genderPane.remove("openCon");
+
+        elements.genderPane.classList.add("openCon");
+        elements.genderPane.style.height = "30vh";
     });
-    elements.tshirt.addEventListener(event, () => { 
-        closeAll(4); 
-        elements.shirtPane.classList.add("openCon"); 
-        elements.shirtPane.style.height = "30vh"; 
+    elements.tshirt.addEventListener(event, () => {
+        closeAll(prevOptSkin);
+        prevOptSkin = 4;
+
+        elements.shirtPane.remove("openCon");
+
+        elements.shirtPane.classList.add("openCon");
+        elements.shirtPane.style.height = "30vh";
     });
-    elements.skinColor.addEventListener(event, () => { 
-        closeAll(5); 
-        elements.skinPane.classList.add("openCon"); 
-        elements.skinPane.style.height = "30vh"; 
+    elements.skinColor.addEventListener(event, () => {
+        closeAll(prevOptSkin);
+        prevOptSkin = 5;
+        elements.skinPane.remove("openCon");
+        elements.skinPane.classList.add("openCon");
+        elements.skinPane.style.height = "30vh";
     });
 });
 

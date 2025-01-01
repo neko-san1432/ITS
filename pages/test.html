@@ -1,45 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expand/Shrink Div</title>
-    <style>
-        /* Default styles for the div */
-        #toggleDiv {
-            width: 200px;
-            height: 100px;
-            background-color: lightblue;
-            transition: all 0.3s ease; /* Smooth transition */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expand and Shrink Div</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
 
-        /* Expanded state */
-        .expanded {
-            width: 400px;
-            height: 200px;
-        }
-    </style>
+    .container {
+      text-align: center;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: #4caf50;
+      margin: 20px auto;
+      transition: all 0.3s ease;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <div id="expandableDiv" class="box"></div>
     <button id="toggleButton">Expand</button>
-    <div id="toggleDiv"></div>
+  </div>
+  <script>
+    const toggleButton = document.getElementById('toggleButton');
+    const expandableDiv = document.getElementById('expandableDiv');
 
-    <script>
-        // Wait until the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            // Get references to the button and the div
-            const toggleButton = document.getElementById('toggleButton');
-            const toggleDiv = document.getElementById('toggleDiv');
+    let isExpanded = false;
 
-            // Add a click event listener to the button
-            toggleButton.addEventListener('click', () => {
-                // Toggle the 'expanded' class on the div
-                toggleDiv.classList.toggle('expanded');
-
-                // Update the button text based on the div's state
-                toggleButton.textContent = toggleDiv.classList.contains('expanded') ? 'Shrink' : 'Expand';
-            });
-        });
-    </script>
+    toggleButton.addEventListener('click', () => {
+      if (isExpanded) {
+        expandableDiv.style.width = '100px';
+        expandableDiv.style.height = '100px';
+        toggleButton.textContent = 'Expand';
+      } else {
+        expandableDiv.style.width = '300px';
+        expandableDiv.style.height = '300px';
+        toggleButton.textContent = 'Shrink';
+      }
+      isExpanded = !isExpanded;
+    });
+  </script>
 </body>
 </html>

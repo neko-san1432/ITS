@@ -75,13 +75,15 @@
   /* background-color: aquamarine; */
   /* border: solid 1px; */
 }
-.usernamePane{
-  position: absolute;
+#usernamePane{
+  position: relative;
+  z-index: 1;
   display: none;
   width: 100vw;
   height: 100vh;
   margin-left:100vw;
   background-color: brown;
+  transition: margin-left 1s ease-in;
 }
 #select {
   /* margin-top: -100vh; */
@@ -92,14 +94,15 @@
   z-index: 1;
   display: block;
     /* border: solid; */
-
 }
-.item {
+#item {
+  z-index: 1;
   display: flex;
   width: 100vw;
   height: 80vh;
   flex-direction: row;
   /* border: solid; */
+  transition: margin-left 1s ease-in;
 }
 .navB{
   display: flex;
@@ -138,12 +141,20 @@
   gap: 10px; 
   border: solid black 1px;
   width: 19.6vw;
-  /* height: 0vh; */
-  /* display: none; */
+  transition: height 1s ease;
 }
 /*==================
   Element Properties 
   ==================*/
+#return2char{
+  /* display: block;
+  position: absolute; */
+  width: 50px;
+  height: 50px;
+  border: 1px solid;
+  margin: 10px;
+  border-radius: 5px;
+}
 #close {
   width: 20px;
   height: 20px;
@@ -264,7 +275,7 @@
   height: 50px;
 }
 #cfirmchara{
-  width: 50px;
+  width: 100px;
   height: 50px;
   position: relative;
 }
@@ -303,12 +314,6 @@
 }
 .returnTransition{
   animation: cancel 3s ease-in forwards;
-}
-.openCon{
-  animation: openPane 2s ease-in forwards;
-}
-.closeCon{
-  animation: closePane 2s ease-in forwards;
 }
 
 @keyframes swipedownSelect {
@@ -400,24 +405,6 @@
   }
   100%{
     opacity: 0;
-  }
-}
-@keyframes openPane {
-  0%{
-    /* transform: scaleY(0vh); */
-    height: 0;
-  }
-  100%{
-    height: 30vh;
-    /* transform: scaleY(30vh); */
-  }
-}
-@keyframes closePane {
-  0%{
-    height: 0;
-  }
-  100%{
-    height: 0vh;
   }
 }
 

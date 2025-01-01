@@ -299,6 +299,8 @@ const elements = {
     genderPane: document.getElementById("gp"),
     shirtPane: document.getElementById("tp"),
     questionPane: document.getElementById("q1"),
+    chara: document.getElementById("cfirmchara"),
+    r2c: document.getElementById("return2char"),
     choices: {
         a: document.getElementById("a"),
         b: document.getElementById("b"),
@@ -347,41 +349,25 @@ function handlePaneAnimation(pane, className, display, callback) {
 }
 function closeAll(name) {
     if (name == 1) {
-        elements.facialPane.remove("openCon");
-        elements.facialPane.classList.add("closeCon");
-        elements.facialPane.addEventListener('animationend', () => {
-            elements.facialPane.style.height = "0vh";
-        })
+        elements.facialExpression.disabled = false;
+        elements.facialPane.style.height = "0vh";
     }
     if (name == 2) {
-        elements.hairPane.remove("openCon");
-        elements.hairPane.classList.add("closeCon");
-        elements.hairPane.addEventListener('animationend', () => {
-            elements.hairPane.style.height = "0vh";
-        })
+        elements.hair.disabled = false;
+        elements.hairPane.style.height = "0vh";
     }
     if (name == 3) {
-        elements.genderPane.remove("openCon");
-        elements.genderPane.classList.add("closeCon");
-        elements.genderPane.addEventListener('animationend', () => {
-            elements.genderPane.style.height = "0vh";
-        })
+        elements.gender.disabled = false;
+        elements.genderPane.style.height = "0vh";
     }
     if (name == 4) {
-        elements.shirtPane.remove("openCon");
-        elements.shirtPane.classList.add("closeCon");
-        elements.shirtPane.addEventListener('animationend', () => {
-            elements.shirtPane.style.height = "0vh";
-        })
+        elements.tshirt.disabled = false;
+        elements.shirtPane.style.height = "0vh";
     }
     if (name == 5) {
-        elements.skinPane.remove("openCon");
-        elements.skinPane.classList.add("closeCon");
-        elements.skinPane.addEventListener('animationend', () => {
-            elements.skinPane.style.height = "0vh";
-        })
+        elements.skinColor.disabled = false;
+        elements.skinPane.style.height = "0vh";
     }
-    console.log(name);
 }
 
 // Event Listeners
@@ -389,45 +375,34 @@ function closeAll(name) {
     elements.facialExpression.addEventListener(event, () => {
         closeAll(prevOptSkin);
         prevOptSkin = 1;
-        elements.facialPane.remove("openCon");
-        elements.facialPane.classList.add("openCon");
+        elements.facialExpression.disabled = true;
         elements.facialPane.style.height = "30vh";
     });
     elements.hair.addEventListener(event, () => {
         closeAll(prevOptSkin);
         prevOptSkin = 2;
-        elements.hairPane
-            .remove("openCon");
-
-        elements.hairPane.classList.add("openCon");
+        elements.hair.disabled = true;
         elements.hairPane.style.height = "30vh";
     });
     elements.gender.addEventListener(event, () => {
         closeAll(prevOptSkin);
         prevOptSkin = 3;
-        elements.genderPane.remove("openCon");
-
-        elements.genderPane.classList.add("openCon");
+        elements.gender.disabled = true;
         elements.genderPane.style.height = "30vh";
     });
     elements.tshirt.addEventListener(event, () => {
         closeAll(prevOptSkin);
         prevOptSkin = 4;
-
-        elements.shirtPane.remove("openCon");
-
-        elements.shirtPane.classList.add("openCon");
+        elements.tshirt.disabled = true;
         elements.shirtPane.style.height = "30vh";
     });
     elements.skinColor.addEventListener(event, () => {
         closeAll(prevOptSkin);
         prevOptSkin = 5;
-        elements.skinPane.remove("openCon");
-        elements.skinPane.classList.add("openCon");
+        elements.skinColor.disabled = true;
         elements.skinPane.style.height = "30vh";
     });
 });
-
 elements.startButton.addEventListener("click", () => {
     elements.menuButton.disabled = true;
     elements.startButton.disabled = true;
@@ -440,13 +415,17 @@ elements.startButton.addEventListener("click", () => {
         elements.startButton.disabled = false;
     });
 });
-
 elements.menuButton.addEventListener("click", () => {
     elements.startPane.style.display = "block";
     handlePaneAnimation(elements.selectionPane, "suSelect", "block", () => {
         elements.sky.style.height = "200px";
     });
 });
+elements.chara.addEventListener("click", () => {
+    document.getElementById("usernamePane").style.display = "block";
+    setTimeout(()=>{document.getElementById("item").style.marginLeft = "-100vw";
+    document.getElementById("usernamePane").style.marginLeft = "0vw";},100)
+})
 
 elements.okButton.addEventListener("click", () => {
     elements.container.style.display = "block";
@@ -456,7 +435,9 @@ elements.okButton.addEventListener("click", () => {
         elements.content.style.display = "block";
     }, 5000);
 });
-
+elements.r2c.addEventListener('click',()=>{
+    
+})
 elements.confirmButton.addEventListener("click", () => {
     elements.container2.style.display = "block";
     handlePaneAnimation(elements.container, "srContainer", "block");

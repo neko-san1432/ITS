@@ -24,7 +24,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 3;
-  display: none;
+  /* display: none; */
 }
 #previous,
 #next {
@@ -44,7 +44,7 @@
   display: flex;
   flex-direction: column;
 }
-#previous{
+#previous {
   display: none;
 }
 #questions {
@@ -52,13 +52,14 @@
   height: 50vh;
   margin-top: 50vh;
 }
-/* #sky {
+#sky {
   margin-top: -100px;
   height: 200px;
   background-color: black;
   width: 100vw;
   z-index: 4;
-} */
+  transition: margin-top 2s ease-in-out;
+}
 .choices {
   position: relative;
   display: flex;
@@ -75,25 +76,25 @@
   /* background-color: aquamarine; */
   /* border: solid 1px; */
 }
-#usernamePane{
+#usernamePane {
   position: relative;
   z-index: 1;
   display: none;
   width: 100vw;
   height: 100vh;
-  margin-left:100vw;
+  margin-left: 100vw;
   background-color: brown;
   transition: margin-left 1s ease-in;
 }
 #select {
-  /* margin-top: -100vh; */
+  margin-top: -100vh;
   width: 100vw;
   height: 100vh;
   background-color: aqua;
   position: absolute;
   z-index: 1;
   display: block;
-    /* border: solid; */
+  /* border: solid; */
 }
 #item {
   z-index: 1;
@@ -104,27 +105,28 @@
   /* border: solid; */
   transition: margin-left 1s ease-in;
 }
-.navB{
+.navB {
   display: flex;
   justify-content: space-between;
   width: 100vw;
   height: auto;
 }
-#blurPane{
+#blurPane {
   background-color: black;
   width: 100vw;
   height: 100vh;
   z-index: -1;
   opacity: 0;
 }
-#notice{
+#notice {
   width: 100vw;
   height: 100vh;
   z-index: 2;
   background-color: rgb(0, 75, 50);
   display: none;
 }
-.leftw,.rightw{
+.leftw,
+.rightw {
   margin-top: 15vh;
   position: relative;
   height: 60vh;
@@ -135,18 +137,21 @@
   border: solid;
 }
 .list-container {
+  overflow-y: auto;
   position: relative;
+  justify-content: space-between;
   display: flex;
   flex-wrap: wrap; /* Allows items to wrap to the next row */
-  gap: 10px; 
+  gap: 10px;
   border: solid black 1px;
   width: 19.6vw;
+  height: 0vh;
   transition: height 1s ease;
 }
 /*==================
   Element Properties 
   ==================*/
-#return2char{
+#return2char {
   /* display: block;
   position: absolute; */
   width: 50px;
@@ -230,7 +235,7 @@
 #hair,
 #gender,
 #tshirt,
-#facialexp{
+#facialexp {
   width: 20vw;
   height: 30px;
 }
@@ -263,21 +268,28 @@
   position: relative;
 }
 .test {
-  position: relative; 
+  position: relative;
   width: 100vw;
   /* border: solid 1px black; */
   text-align: center;
   height: auto;
   font-size: 2em;
 }
-#return{
+#return {
   width: 50px;
   height: 50px;
 }
-#cfirmchara{
+#cfirmchara {
   width: 100px;
   height: 50px;
   position: relative;
+}
+.circle {
+  width: 40px;
+  position: relative;
+  height: 40px; /* Diameter of the circle */
+  background-color: blue; /* Circle color */
+  border-radius: 50%;
 }
 /*==========
   Animations 
@@ -312,98 +324,58 @@
 .slContainer2 {
   animation: swipeLeftContainer2 2s ease-in-out forwards;
 }
-.returnTransition{
+.returnTransition {
   animation: cancel 3s ease-in forwards;
 }
 
 @keyframes swipedownSelect {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
+  0% {transform: translateY(0);}
+  100% {transform: translateY(100vh);}
 }
 @keyframes swipedownStart {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
+  0% {transform: translateY(0);}
+  100% {transform: translateY(100vh);}
 }
 @keyframes swipedownSky {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
+  0% {transform: translateY(0);}
+  100% {transform: translateY(100vh);}
 }
 @keyframes swipeupSelect {
-  0% {
-    transform: translateY(100vh);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% {transform: translateY(0);}
+  100% {transform: translateY(-100vh);}
 }
 @keyframes swipeupStart {
-  0% {
-    transform: translateY(100vh);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(0);}
 }
 @keyframes swipeupSky {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-100vh);
-  }
+  0% {transform: translateY(0);}
+  100% {transform: translateY(0vh);}
 }
 @keyframes swipeRightContainer {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100vw);
-  }
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-100vw);}
 }
 @keyframes swipeRightContainer2 {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100vw);
-  }
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-100vw);}
 }
 @keyframes swipeLeftContainer {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100vw);
-  }
+  0% {transform: translateX(0);}
+  100% {transform: translateX(100vw);}
 }
 @keyframes swipeLeftContainer2 {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100vw);
-  }
+  0% {transform: translateX(0);}
+  100% {transform: translateX(100vw);}
 }
 @keyframes cancel {
-  0%{
+  0% {
     opacity: 0;
   }
-  50%{
+  50% {
     opacity: 1;
   }
-  100%{
+  100% {
     opacity: 0;
   }
 }
@@ -425,9 +397,12 @@ body {
   display: flex;
   flex-direction: row;
 }
-.fvh{
+.fvh {
   height: 100vh;
 }
-.fvw{
+.fvw {
   height: 100vw;
+}
+:root {
+  --asd: calc(40px / 100vw);
 }

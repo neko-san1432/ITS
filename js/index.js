@@ -137,7 +137,6 @@ function closeAll(name) {
 });
 elements.menuButton.addEventListener('click', () => {
     elements.startPane.style.display = "block";
-
     elements.startPane.style.marginTop = "-1vh"
     elements.selectionPane.classList.add('suSelect');
     elements.startPane.classList.add('suStart');
@@ -178,21 +177,54 @@ elements.chara.addEventListener("click", () => {
 })
 
 elements.okButton.addEventListener("click", () => {
-    elements.container.style.display = "block";
-    elements.container2.classList.add("slContainer2");
-    setTimeout(() => {
-        elements.startButton.style.display = "none";
-        elements.content.style.display = "block";
-    }, 5000);
-});
-elements.r2c.addEventListener('click', () => {
+    elements.menuButton.style.display = "none";
+    elements.chara.style.display = "none";
+    document.getElementById("item").style.justifyContent = "center";
+    document.getElementById("item").style.alignItems = "center";
+    document.getElementById("item").style.height = "100vh";
+    document.getElementById("item").style.display = "flex";
+    document.getElementById("item").style.transition = "none";
+    document.getElementById("usernamePane").style.display = "none";
+    document.getElementById("test").style.display = "none";
+    document.getElementById("leftw").style.display = "none";
+    document.getElementById("rightw").style.display = "none";
     document.getElementById("item").style.marginLeft = "0vw";
-    document.getElementById("usernamePane").style.marginLeft = "100vw";
+    document.getElementById("userName").style.marginLeft = "100vw";
+    elements.container.classList.add('slContainer');
+    elements.container2.classList.add('slContainer2');
+    elements.container2.addEventListener('animationend', () => {
+        elements.container.classList.remove('slContainer');
+        elements.container2.classList.remove('slContainer2');
+        elements.container.style.marginLeft = "0vw"
+        elements.container2.style.display = "none";
+        elements.container2.style.marginLeft = "100vw"
+    }, { once: true });
     setTimeout(() => {
-        document.getElementById("usernamePane").style.display = "none";
-    }, 1000)
-})
-elements.confirmButton.addEventListener('click', () => {
+        document.getElementById("person").style.transition = "margin-top 2s ease";
+        document.getElementById("person").style.marginTop = "50vh";
+        elements.content.style.display = "block";
+        elements.startPane.style.display = "none";
+        elements.selectionPane.addEventListener("animationEnd", () => { 
+            elements.selectionPane.style.display = "none";
+            elements.startPane.style.display = "block";
+            elements.startPane.style.marginTop = "-1vh"
+            elements.selectionPane.classList.add('suSelect');
+            elements.startPane.classList.add('suStart');
+            elements.sky.style.height = "200px"
+            elements.startPane.style.marginTop = "0vh"
+            console.log('clicked')
+            elements.sky.style.marginTop = "calc(0vh - 100px)";
+            elements.selectionPane.addEventListener('animationend', () => {
+                elements.selectionPane.classList.remove('suSelect');
+                elements.startPane.classList.remove('suStart');
+                elements.selectionPane.style.marginTop = "-100vh"
+                elements.sky.style.height = "200px"
+                elements.selectionPane.style.marginTop = "-100vh"
+                console.log(elements.startButton.disabled)
+            }, { once: true });
+        })
+    }, 4000);
+}); elements.confirmButton.addEventListener('click', () => {
     //check db if the username is available
     elements.container2.style.display = "block";
     elements.container.classList.add('srContainer');
@@ -204,6 +236,14 @@ elements.confirmButton.addEventListener('click', () => {
         elements.container2.style.marginLeft = "0vw"
     }, { once: true });
 })
+elements.r2c.addEventListener('click', () => {
+    document.getElementById("item").style.marginLeft = "0vw";
+    document.getElementById("usernamePane").style.marginLeft = "100vw";
+    setTimeout(() => {
+        document.getElementById("usernamePane").style.display = "none";
+    }, 1000)
+})
+
 
 elements.usernameInput.addEventListener("input", () => {
     elements.confirmButton.disabled = elements.usernameInput.value === "";

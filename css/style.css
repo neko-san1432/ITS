@@ -125,8 +125,8 @@
   background-color: rgb(0, 75, 50);
   display: none;
 }
-.leftw,
-.rightw {
+#leftw,
+#rightw {
   margin-top: 15vh;
   position: relative;
   height: 60vh;
@@ -266,8 +266,9 @@
   width: 150px;
   height: 300px;
   position: relative;
+  background-color: blueviolet;
 }
-.test {
+#test {
   position: relative;
   width: 100vw;
   /* border: solid 1px black; */

@@ -40,8 +40,8 @@ const elements = {
 // Variables
 let questionIndex = 0;
 let prevOptSkin = 0;
-const pretestQuestions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
-const correctAnswers = ["a", "b", "c", "d", "a", "b", "c", "d", "a", "b"];
+const pretestQuestions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+const correctAnswers = ["a", "b", "c", "d", "a", "b", "c", "d", "a", "b", "b", "b", "b", "b", "b"];
 const userAnswers = Array(pretestQuestions.length).fill("");
 
 // Helper functions
@@ -201,28 +201,28 @@ elements.okButton.addEventListener("click", () => {
     }, { once: true });
     setTimeout(() => {
         document.getElementById("person").style.transition = "margin-top 2s ease";
-        document.getElementById("person").style.marginTop = "50vh";
+        document.getElementById("person").style.marginTop = "100vh";
         elements.content.style.display = "block";
         elements.startPane.style.display = "none";
-        elements.selectionPane.addEventListener("animationEnd", () => { 
+        // elements.selectionPane.addEventListener("animationEnd", () => {
+        elements.startPane.style.display = "block";
+        elements.startPane.style.marginTop = "-1vh"
+        elements.selectionPane.classList.add('suSelect');
+        elements.startPane.classList.add('suStart');
+        elements.sky.style.height = "200px"
+        elements.startPane.style.marginTop = "0vh"
+        console.log('clicked')
+        elements.sky.style.marginTop = "calc(0vh - 200px)";
+        elements.sky.addEventListener('animationend', () => {
             elements.selectionPane.style.display = "none";
-            elements.startPane.style.display = "block";
-            elements.startPane.style.marginTop = "-1vh"
-            elements.selectionPane.classList.add('suSelect');
-            elements.startPane.classList.add('suStart');
+            elements.selectionPane.classList.remove('suSelect');
+            elements.startPane.classList.remove('suStart');
+            elements.selectionPane.style.marginTop = "-100vh"
             elements.sky.style.height = "200px"
-            elements.startPane.style.marginTop = "0vh"
-            console.log('clicked')
-            elements.sky.style.marginTop = "calc(0vh - 100px)";
-            elements.selectionPane.addEventListener('animationend', () => {
-                elements.selectionPane.classList.remove('suSelect');
-                elements.startPane.classList.remove('suStart');
-                elements.selectionPane.style.marginTop = "-100vh"
-                elements.sky.style.height = "200px"
-                elements.selectionPane.style.marginTop = "-100vh"
-                console.log(elements.startButton.disabled)
-            }, { once: true });
-        })
+            elements.selectionPane.style.marginTop = "-100vh"
+            console.log(elements.startButton.disabled)
+        }, { once: true });
+        // })
     }, 4000);
 }); elements.confirmButton.addEventListener('click', () => {
     //check db if the username is available
@@ -301,3 +301,7 @@ elements.returnButton.addEventListener("click", () => {
         elements.usernameInput.value = "";
     });
 });
+
+
+
+

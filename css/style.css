@@ -1,6 +1,22 @@
 /*========== 
   Containers 
   ==========*/
+#menuU{}
+#userStat{
+
+}
+#blur{}
+#level-stat{}
+#place{
+
+}
+.player-container{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
 #container2 {
   margin-left: 100vw;
   display: none;
@@ -201,11 +217,11 @@
 }
 #content {
   position: absolute;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(219, 84, 84);
   width: 100vw;
   height: 100vh;
   z-index: 3;
-  display: none;
+  /* display: none; */
 }
 #menuB {
   margin: 10px;
@@ -291,6 +307,19 @@
   height: 40px; /* Diameter of the circle */
   background-color: blue; /* Circle color */
   border-radius: 50%;
+}
+#player{
+  width: 100px;
+  height: 200px;
+  z-index: 2;
+  background-color: rgb(81, 47, 47);
+}
+#place{
+
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-color: rgb(27, 46, 46);
 }
 /*==========
   Animations 

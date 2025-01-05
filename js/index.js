@@ -1,3 +1,5 @@
+
+
 // Define DOM elements
 const elements = {
     startButton: document.getElementById("start"),

@@ -3,84 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animated Dropdown Menu</title>
+  <title>WASD Controlled Player</title>
   <style>
-    /* Basic styling for dropdown */
-    .dropdown {
+    /* Play Area */
+    #play-area {
       position: relative;
-      width: 200px;
-      font-family: Arial, sans-serif;
-    }
-
-    .dropdown-button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-      outline: none;
-    }
-
-    .dropdown-content {
+      width: 500px;
+      height: 500px;
+      border: 2px solid black;
+      margin: 20px auto;
+      background: lightgray;
       overflow: hidden;
-      background-color: #f9f9f9;
-      max-height: 0; /* Start collapsed */
-      transition: max-height 0.3s ease; /* Smooth animation */
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Obstacles */
+    .obstacle {
       position: absolute;
-      width: 100%;
-      z-index: 1;
-      border-radius: 5px;
-      background-color: blue;
+      width: 50px;
+      height: 50px;
+      background: red;
     }
 
-    .dropdown-content a {
-      display: block;
-      padding: 10px;
-      color: black;
-      text-decoration: none;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #ddd;
-    }
-
-    .dropdown.active .dropdown-content {
-      max-height: 300px; /* Adjust height based on content */
+    /* Player */
+    #player {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: green;
+      top: 250px;
+      left: 250px;
+      border-radius: 50%;
     }
   </style>
 </head>
 <body>
-
-<div class="dropdown">
-  <button class="dropdown-button">Dropdown Menu</button>
-  <div class="dropdown-content">
-    <a href="#option1">Option 1</a>
-    <a href="#option2">Option 2</a>
-    <a href="#option3">Option 3</a>
+  <!-- Play Area -->
+  <div id="play-area">
+    <div class="obstacle" style="top: 50px; left: 100px;"></div>
+    <div class="obstacle" style="top: 200px; left: 150px;"></div>
+    <div class="obstacle" style="top: 350px; left: 300px;"></div>
+    <div id="player"></div>
   </div>
-</div>
 
-<script>
-  // Select dropdown elements
-  const dropdown = document.querySelector('.dropdown');
-  const button = dropdown.querySelector('.dropdown-button');
+  <script>
+    const player = document.getElementById('player');
+    const obstacles = document.querySelectorAll('.obstacle');
+    const playArea = document.getElementById('play-area');
 
-  // Toggle dropdown on button click
-  button.addEventListener('click', () => {
-    dropdown.classList.toggle('active');
-  });
+    // Player movement speed
+    const PLAYER_SPEED = 5;
 
-  // Close dropdown if clicked outside
-  document.addEventListener('click', (event) => {
-    if (!dropdown.contains(event.target)) {
-      dropdown.classList.remove('active');
+    // Keep track of player movement
+    let movement = { x: 0, y: 0 };
+
+    // Listen for key presses to control movement
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'w') movement.y = -PLAYER_SPEED; // Up
+      if (event.key === 's') movement.y = PLAYER_SPEED;  // Down
+      if (event.key === 'a') movement.x = -PLAYER_SPEED; // Left
+      if (event.key === 'd') movement.x = PLAYER_SPEED;  // Right
+    });
+
+    // Stop movement when key is released
+    document.addEventListener('keyup', (event) => {
+      if (['w', 's'].includes(event.key)) movement.y = 0;
+      if (['a', 'd'].includes(event.key)) movement.x = 0;
+    });
+
+    // Move player and check for collisions
+    function movePlayer() {
+      const playerRect = player.getBoundingClientRect();
+      const playAreaRect = playArea.getBoundingClientRect();
+
+      const nextX = Math.min(
+        Math.max(player.offsetLeft + movement.x, 0),
+        playArea.offsetWidth - player.offsetWidth
+      );
+
+      const nextY = Math.min(
+        Math.max(player.offsetTop + movement.y, 0),
+        playArea.offsetHeight - player.offsetHeight
+      );
+
+      // Check for collisions with obstacles
+      let collision = false;
+      obstacles.forEach((obstacle) => {
+        const obstacleRect = obstacle.getBoundingClientRect();
+        if (
+          nextX < obstacleRect.left - playAreaRect.left + obstacle.offsetWidth &&
+          nextX + player.offsetWidth > obstacleRect.left - playAreaRect.left &&
+          nextY < obstacleRect.top - playAreaRect.top + obstacle.offsetHeight &&
+          nextY + player.offsetHeight > obstacleRect.top - playAreaRect.top
+        ) {
+          collision = true;
+        }
+      });
+
+      if (!collision) {
+        player.style.left = `${nextX}px`;
+        player.style.top = `${nextY}px`;
+      }
     }
-  });
-</script>
 
+    // Update the player's position at regular intervals
+    setInterval(movePlayer, 16);
+  </script>
 </body>
 </html>

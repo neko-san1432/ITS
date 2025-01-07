@@ -1,22 +1,26 @@
 /*========== 
   Containers 
   ==========*/
-#menuU{}
-#userStat{
-
+#menuU {
 }
-#blur{}
-#level-stat{}
-#place{
-
+#userStat {
 }
-.player-container{
+#blur {
+}
+#level-stat {
+}
+#place {
+}
+.player-container {
   display: flex;
   width: 100vw;
   height: 100vh;
   justify-content: center;
   align-items: center;
 }
+#conversation{}
+#notice{}
+#blurPane{}
 #container2 {
   margin-left: 100vw;
   display: none;
@@ -133,6 +137,7 @@
   height: 100vh;
   z-index: -1;
   opacity: 0;
+  
 }
 #notice {
   width: 100vw;
@@ -167,6 +172,16 @@
 /*==================
   Element Properties 
   ==================*/
+#start-module {
+}
+#p-falling {
+  position: absolute;
+  width: 5vw;
+  height: 5vh;
+  z-index: 1;
+  display: none;
+}
+
 #return2char {
   /* display: block;
   position: absolute; */
@@ -308,18 +323,31 @@
   background-color: blue; /* Circle color */
   border-radius: 50%;
 }
-#player{
+#player {
   width: 100px;
   height: 200px;
   z-index: 2;
   background-color: rgb(81, 47, 47);
 }
-#place{
-
+#place {
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background-color: rgb(137, 251, 251);
+}
+#intro{
   width: 100vw;
   height: 100vh;
   z-index: 1;
   background-color: rgb(27, 46, 46);
+}
+#sky2{
+  display: absolute;
+  width: 100vw;
+  height: 100px;
+  margin-top: calc(100vh - 100px);
+  z-index: 3;
+  background-color: rgb(37, 189, 189);
 }
 /*==========
   Animations 
@@ -359,44 +387,84 @@
 }
 
 @keyframes swipedownSelect {
-  0% {transform: translateY(0);}
-  100% {transform: translateY(100vh);}
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
 }
 @keyframes swipedownStart {
-  0% {transform: translateY(0);}
-  100% {transform: translateY(100vh);}
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
 }
 @keyframes swipedownSky {
-  0% {transform: translateY(0);}
-  100% {transform: translateY(100vh);}
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
 }
 @keyframes swipeupSelect {
-  0% {transform: translateY(0);}
-  100% {transform: translateY(-100vh);}
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100vh);
+  }
 }
 @keyframes swipeupStart {
-  0% {transform: translateY(100vh);}
-  100% {transform: translateY(0);}
+  0% {
+    transform: translateY(100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 @keyframes swipeupSky {
-  0% {transform: translateY(0);}
-  100% {transform: translateY(0vh);}
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0vh);
+  }
 }
 @keyframes swipeRightContainer {
-  0% {transform: translateX(0);}
-  100% {transform: translateX(-100vw);}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
 }
 @keyframes swipeRightContainer2 {
-  0% {transform: translateX(0);}
-  100% {transform: translateX(-100vw);}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100vw);
+  }
 }
 @keyframes swipeLeftContainer {
-  0% {transform: translateX(0);}
-  100% {transform: translateX(100vw);}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
 }
 @keyframes swipeLeftContainer2 {
-  0% {transform: translateX(0);}
-  100% {transform: translateX(100vw);}
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
 }
 @keyframes cancel {
   0% {
@@ -426,13 +494,4 @@ body {
   height: auto;
   display: flex;
   flex-direction: row;
-}
-.fvh {
-  height: 100vh;
-}
-.fvw {
-  height: 100vw;
-}
-:root {
-  --asd: calc(40px / 100vw);
 }

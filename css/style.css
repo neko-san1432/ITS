@@ -11,6 +11,9 @@
 }
 #place {
 }
+#conversation{}
+#notice{}
+#blurPane{}
 .player-container {
   display: flex;
   width: 100vw;
@@ -18,9 +21,14 @@
   justify-content: center;
   align-items: center;
 }
-#conversation{}
-#notice{}
-#blurPane{}
+.logo{
+  margin-top: 100px;
+  font-size: 5em;
+  text-align: center;
+  justify-content: center;
+  /* opacity: 0; */
+  transition: opacity 5s ease-in;
+}
 #container2 {
   margin-left: 100vw;
   display: none;
@@ -80,6 +88,15 @@
   z-index: 4;
   transition: margin-top 2s ease-in-out;
 }
+#sky1 {
+  margin-top: -100px;
+  height: 200px;
+  background-color: black;
+  width: 100vw;
+  z-index: 4;
+  transition: margin-top 2s ease-in-out;
+}
+
 .choices {
   position: relative;
   display: flex;
@@ -175,11 +192,15 @@
 #start-module {
 }
 #p-falling {
+  background-color: antiquewhite;
   position: absolute;
-  width: 5vw;
-  height: 5vh;
-  z-index: 1;
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+  margin-top: 0vh;
   display: none;
+  border: 1px solid;
+  transition: margin-top 5s ease-in;
 }
 
 #return2char {
@@ -235,7 +256,9 @@
   background-color: rgb(219, 84, 84);
   width: 100vw;
   height: 100vh;
-  z-index: 3;
+  z-index: 0;
+  /* margin-top: 100vh; */
+  transition: margin-top 2s ease-in-out;
   /* display: none; */
 }
 #menuB {
@@ -247,6 +270,9 @@
   border-radius: 5px;
   align-items: center;
   z-index: 6;
+}
+.a{
+
 }
 #a,
 #b,
@@ -319,8 +345,8 @@
 .circle {
   width: 40px;
   position: relative;
-  height: 40px; /* Diameter of the circle */
-  background-color: blue; /* Circle color */
+  height: 40px; 
+  background-color: blue; 
   border-radius: 50%;
 }
 #player {
@@ -340,6 +366,9 @@
   height: 100vh;
   z-index: 1;
   background-color: rgb(27, 46, 46);
+  display: flex;
+  /* text-align: center; */
+  justify-content: center;
 }
 #sky2{
   display: absolute;

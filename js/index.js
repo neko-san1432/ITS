@@ -1,5 +1,4 @@
 
-
 // Define DOM elements
 const elements = {
     startButton: document.getElementById("start"),
@@ -31,6 +30,8 @@ const elements = {
     questionPane: document.getElementById("q1"),
     chara: document.getElementById("cfirmchara"),
     r2c: document.getElementById("return2char"),
+    logo: document.querySelector("logo"),
+    login: document.getElementById("login"),
     choices: {
         a: document.getElementById("a"),
         b: document.getElementById("b"),
@@ -40,22 +41,24 @@ const elements = {
 };
 
 // Variables
+let questiondispalay = false;
 let questionIndex = 0;
 let prevOptSkin = 0;
-const pretestQuestions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
-const correctAnswers = ["a", "b", "c", "d", "a", "b", "c", "d", "a", "b", "b", "b", "b", "b", "b"];
+let currentAnswer = "";
+// const pretestQuestions = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+const pretestQuestions = ["1"];
+// const correctAnswers = ["a", "b", "c", "d", "a", "b", "c", "d", "a", "b", "b", "b", "b", "b", "b"];
+const correctAnswers = ["a"];
 const userAnswers = Array(pretestQuestions.length).fill("");
 
-// Helper functions
-function togglePane(pane, height) {
-    pane.style.height = height;
-}
+
 
 function resetAnswerState() {
     Object.values(elements.choices).forEach((choice) => {
         choice.style.backgroundColor = "white";
     });
 }
+
 
 function updateSelectedAnswer(answer) {
     resetAnswerState();
@@ -69,7 +72,7 @@ function validateAllAnswers() {
     elements.okButton.disabled = !allAnswered;
 }
 
-function handlePaneAnimation(pane, pane2, className, className2, display, display2, callback, skyani) {
+function handlePaneAnimation(pane, pane2, className, className2, display, display2, callback) {
     pane.classList.add(className);
     pane2.classList.add(className2);
     pane.addEventListener("animationend", () => {
@@ -80,7 +83,6 @@ function handlePaneAnimation(pane, pane2, className, className2, display, displa
         console.log(display + display2)
         if (callback) callback();
     }, { once: true });
-
 }
 function closeAll(name) {
     if (name == 1) {
@@ -202,32 +204,32 @@ elements.okButton.addEventListener("click", () => {
         elements.container2.style.marginLeft = "100vw"
     }, { once: true });
     setTimeout(() => {
+        // elements.login.style.display = "none";
         document.getElementById("person").style.transition = "margin-top 2s ease";
         document.getElementById("person").style.marginTop = "100vh";
         elements.content.style.display = "block";
-        elements.startPane.style.display = "none";
-        // elements.selectionPane.addEventListener("animationEnd", () => {
-        elements.startPane.style.display = "block";
-        elements.startPane.style.marginTop = "-1vh"
-        elements.selectionPane.classList.add('suSelect');
-        elements.startPane.classList.add('suStart');
-        elements.sky.style.height = "200px"
-        elements.startPane.style.marginTop = "0vh"
-        console.log('clicked')
-        elements.sky.style.marginTop = "calc(0vh - 200px)";
-        elements.sky.addEventListener('animationend', () => {
-            elements.selectionPane.style.display = "none";
-            elements.selectionPane.classList.remove('suSelect');
-            elements.startPane.classList.remove('suStart');
-            elements.selectionPane.style.marginTop = "-100vh"
-            elements.sky.style.height = "200px"
-            elements.selectionPane.style.marginTop = "-100vh"
-            console.log(elements.startButton.disabled)
-        }, { once: true });
-        // })
+        elements.startButton.style.display = "none";
+        document.getElementById("person").addEventListener("transitionend", () => {
+            elements.startPane.style.display = "block";
+            elements.selectionPane.classList.add('suSelect');
+            elements.sky.classList.add('suSky');
+            elements.startPane.classList.add('suStart');
+            elements.content.style.marginTop = "-100vh";
+            elements.content.addEventListener('animationend', () => {
+                elements.sky.classList.remove('suSky');
+                elements.logo.style.opacity = "1";
+                elements.startPane.classList.remove('suStart');
+                elements.startPane.style.marginTop = "0vh";
+                elements.selectionPane.classList.remove('suSelect');
+                elements.selectionPane.style.display = "none";
+                elements.startPane.style.display = "none";
+            });
+        })
     }, 4000);
-}); elements.confirmButton.addEventListener('click', () => {
+});
+elements.confirmButton.addEventListener('click', () => {
     //check db if the username is available
+    questiondispalay = true;
     elements.container2.style.display = "block";
     elements.container.classList.add('srContainer');
     elements.container2.classList.add('srContainer2');
@@ -250,15 +252,64 @@ elements.r2c.addEventListener('click', () => {
 elements.usernameInput.addEventListener("input", () => {
     elements.confirmButton.disabled = elements.usernameInput.value === "";
 });
+// document.addEventListener("keydown", (event) => {
+//     if (event.key === "Enter") {
+//         if (questionIndex === pretestQuestions.length - 1 && questionIndex) {
+//             elements.confirmButton.click();
+//         } else if (questiondispalay) {
+//             questionIndex++;
+//             elements.nextQuestion.click();
+//         }
+//     }
+// });
+// Object.values(elements.choices).forEach(choice => {
+//     choice.addEventListener("keydown", (event) => {
+//         if (event.key === "Enter") {
+//             if (questionIndex === pretestQuestions.length - 1 && questiondispalay) {
+//                 elements.confirmButton.click();
+//             } else if (questiondispalay) {
+//                 elements.nextQuestion.click();
+//             }
+//         }
+//     });
+// });
+Object.values(elements.choices).forEach(choice => {
+    choice.addEventListener("keydown", (event) => {
+        if (event.key === 'enter' && questiondispalay) {
+            if (questionIndex < pretestQuestions.length - 1) {
+                if (currentAnswer === "") {
+                    console.log('here')
+                    elements.notice.style.display = "block";
+                    setTimeout(() => {
+                        elements.notice.style.display = "none";
+                    }, 2000);
+                    return;
+                } else {
+                    userAnswers[questionIndex] = currentAnswer;
+                }
+                questionIndex++;
+                elements.questionPane.textContent = pretestQuestions[questionIndex];
+                updateSelectedAnswer(userAnswers[questionIndex]);
+                elements.previousQuestion.style.display = "block";
+                if (questionIndex === pretestQuestions.length - 1) {
+                    elements.nextQuestion.style.display = "none";
+                }
+            }
+        
+        }
+    })
+});
 
 elements.nextQuestion.addEventListener("click", () => {
     if (questionIndex < pretestQuestions.length - 1) {
-        if (!userAnswers[questionIndex]) {
+        if (currentAnswer === "") {
             elements.notice.style.display = "block";
             setTimeout(() => {
                 elements.notice.style.display = "none";
             }, 2000);
             return;
+        } else {
+            userAnswers[questionIndex] = currentAnswer;
         }
         questionIndex++;
         elements.questionPane.textContent = pretestQuestions[questionIndex];
@@ -269,7 +320,6 @@ elements.nextQuestion.addEventListener("click", () => {
         }
     }
 });
-
 elements.previousQuestion.addEventListener("click", () => {
     if (questionIndex > 0) {
         questionIndex--;
@@ -285,6 +335,7 @@ elements.previousQuestion.addEventListener("click", () => {
 Object.entries(elements.choices).forEach(([key, choice]) => {
     choice.addEventListener("click", () => {
         resetAnswerState();
+        currentAnswer = key;
         userAnswers[questionIndex] = key;
         choice.style.backgroundColor = "blue";
         validateAllAnswers();

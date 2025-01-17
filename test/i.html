@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase with Vanilla JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.min.js"></script>
+    <script src="./test.js" defer></script>
+</head>
+<body>
+    <h1>Supabase Example</h1>
+    <div id="data"></div>
+
+    <script>
+        // Initialize Supabase client
+        const supabase = Supabase.createClient('YOUR_SUPABASE_URL', 'YOUR_SUPABASE_PUBLIC_ANON_KEY');
+
+        // Fetch data from a Supabase table
+        async function fetchData() {
+            const { data, error } = await supabase
+                .from('your_table_name') // replace with your actual table name
+                .select('*'); // fetch all rows
+
+            if (error) {
+                console.error('Error fetching data:', error);
+            } else {
+                // Display the data on the page
+                const dataElement = document.getElementById('data');
+                data.forEach(item => {
+                    const div = document.createElement('div');
+                    div.textContent = JSON.stringify(item);
+                    dataElement.appendChild(div);
+                });
+            }
+        }
+
+        // Call the fetchData function when the page loads
+        fetchData();
+    </script>
+</body>
+</html>

@@ -247,6 +247,7 @@ elements.r2c.addEventListener('click', () => {
         document.getElementById("usernamePane").style.display = "none";
     }, 1000)
 })
+kaboom
 
 
 elements.usernameInput.addEventListener("input", () => {

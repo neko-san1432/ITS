@@ -1,0 +1,132 @@
+@font-face {
+  font-family: "Pixelized-Text";
+  src: url("../public/joystix\ monospace.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+button {
+  font-family: "Pixelized-Text", sans-serif;
+  font-size: medium;
+  width: 40px;
+  height: 40px;
+}
+body {
+  font-family: "Pixelized-Text", sans-serif;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+input {
+  font-family: "Pixelized-Text", sans-serif;
+  font-size: medium;
+}
+
+#transition,
+#login,
+#map,
+#scenes,
+#admin,
+#pretest {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+}
+#transition {
+  z-index: 5;
+  width: 110vw;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: 100vw;
+  /* display: none; */
+  background-color: aquamarine;
+  background-image: url("../public/transitionbg.png");
+}
+#login {
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
+#pretest {
+  z-index: 3;
+  display: flex;
+  background-color: black;
+}
+#map {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  background-color: green;
+}
+#scenes {
+  z-index: 1;
+  background-color: violet;
+}
+#admin {
+  z-index: 0;
+  background-color: teal;
+}
+@keyframes move-center {
+  0% {
+    left: 100vw;
+  }
+  50% {
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    left: -110vw; /* Moves far enough to the left to be completely off-screen */
+  }
+}
+
+@keyframes reset-position {
+  0% {
+    left: -110vw; /* Starts off-screen to the left */
+  }
+  100% {
+    left: 100vw; /* Returns to the original position off-screen to the right */
+  }
+}
+#close_userprof {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background-color: aqua;
+}
+.l {
+  /* position: absolute; */
+  width: 90vw;
+  height: 50px;
+  border: solid;
+}
+#userinformation {
+  width: 80vw;
+  height: 80vh;
+  border: solid 1px black;
+}
+#userphoto {
+  width: 100px;
+  height: 100px;
+}
+#userdetails {
+  display: flex;
+  flex-direction: column;
+}
+#username_user {
+  width: 100px;
+  height: 20px;
+}
+#edit_username {
+  width: 20px;
+  height: 20px;
+}
+#email_user {
+}
+#edit_email {
+  width: 20px;
+  height: 20px;
+}

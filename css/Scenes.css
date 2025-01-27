@@ -1,0 +1,92 @@
+#blur_bg{
+    background-color: transparent;
+    filter: blur( 5px);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}   
+#pause{
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#gameplay{
+    position: absolute;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+}
+#a,#b,#c,#d{
+    position: absolute;
+    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+}
+#choices{
+    position: absolute;
+    z-index: 4;
+    width: 100vw;
+    height: 100vh;
+}
+#background{
+    position: absolute;
+    z-index: 5;
+    width: 100vw;
+    height: 100vh;
+}
+#progress_bar{
+    position: absolute;
+    z-index: 6;
+    width: 100vw;
+    height: 100vh;
+}
+#timer{
+    position: absolute;
+    z-index: 7;
+    width: 100vw;
+    height: 100vh;
+}
+#pause_menu{
+    position: absolute;
+    z-index: 8;
+    width: 100vw;
+    height: 100vh;
+}
+#resume{
+    position: absolute;
+    z-index: 9;
+    width: 100vw;
+    height: 100vh;
+}
+#retry{
+    position: absolute;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+}
+#home2{
+    position: absolute;
+    z-index: 11;
+    width: 100vw;
+    height: 100vh;
+}
+#confirmation_backto_levels{
+    position: absolute;
+    z-index: 12;
+    width: 100vw;
+    height: 100vh;
+}
+#yes{  
+    position: absolute;
+    z-index: 13;
+    width: 100vw;
+    height: 100vh;
+}
+#no{
+    position: absolute;
+    z-index: 14;
+    width: 100vw;
+    height: 100vh;
+}

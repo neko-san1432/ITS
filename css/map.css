@@ -1,0 +1,186 @@
+#leaderboard {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100vw;
+  /* justify-content: center; */
+  align-items: center;
+  border: 1px solid;
+  width: 40vw;
+  height: 100vh;
+  border-radius:  0 5px 5px 0 ;
+  background-color: red;
+  position: absolute;
+}
+#play {
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  background-color: transparent;
+}
+#heart {
+  background-image: url("../public/pngwing.com.png");
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  background-size: cover;
+  /* border: 1px solid; */
+}
+#hearts {
+  display: flex;
+  width: 250px;
+  height: 50px;
+  background-color: transparent;
+}
+#profile_banner {
+  /* position: absolute; */
+  /* margin-top: 50px ; */
+  width: 250px;
+  height: 100px;
+  background-color: transparent;
+  border: 1px solid;
+}
+.rowFlex{
+  display: flex;
+  flex-direction: row;
+}
+.imgresize{
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+#show_lb {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+  width: 50px;
+  height: 50px;
+}
+#game {
+  width: 10px;
+  height: 10px;
+  z-index: 1;
+
+}
+#show_username {
+  width: 100%;
+  height: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  /* border: 1px solid; */
+
+
+}
+#home {
+  z-index: 2;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+
+#user_profile {
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width:90vw;
+  height: 90vh;
+  background-color: red;
+  margin: 5%;
+  position: absolute;
+
+}
+#close_lb {
+  background-image: url("../public/close_b.png");
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  
+}
+#close_userprof {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+#edit_username {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+#userphoto {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+}
+#edit_email {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+#username_user {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+#email_user {
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+#userinformation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+#userdetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+}
+#logout_client {
+  width: 50px;
+  height: 50px;
+}
+#leaderboardTable {
+  width: 10px;
+  height: 10px;
+}
+#utils{
+  /* position: relative; */
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+.navi{
+  display: flex;
+  border: 1px solid;
+  width: 100vw;
+  height: 50px;
+  justify-content: space-between;
+}
+
+#prev_map,#next_map{
+  height: 30vh;
+  width: 10vw;
+}

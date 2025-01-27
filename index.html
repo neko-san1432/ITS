@@ -1,0 +1,213 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ettiquetta Japan</title>
+    <link rel="stylesheet" href="css/Main.css" />
+    <link rel="stylesheet" href="css/Login.css" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/Scenes.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/pretest.css" />
+    <script type="module" src="./js/page_interaction/Login.js" defer></script>
+    <script
+      type="module"
+      src="./js/page_interaction/transition.js"
+      defer
+    ></script>
+    <script
+      type="module"
+      src="./js/page_interaction/map.js"
+      defer
+    ></script>
+    <script type="module" src="./js/page_interaction/pretest.js" defer></script>
+    <script type="module" src="./js/db/Supabase.js" defer></script>
+  </head>
+
+  <body>
+    <div id="transition"></div>
+    <div id="login">
+      <div id="start">
+        <button id="startbutton">
+          <div class="bound">
+            <div class="upper">
+              Etiquetta Japan
+            </div>
+            <div class="lower" id="statAuth">Click here to login</div>
+          </div>
+          <div id="background"></div>
+        </button>
+      </div> 
+
+    <div id="confirm_email">
+        <img src="" alt="confirming" />
+        <div>Please check your email to confirm your identity</div>
+      </div>
+      <div id="failed">
+        <img src="" alt="failed" />
+        <div>Email confirmation timeout</div>
+      </div>
+      <!-- <div id="setusername">
+        <div>What shall we call you?</div>
+        <input type="text" id="username" placeholder="Username" />
+        <button id="submit_username" disabled>Submit</button>
+      </div> -->
+
+    <div id="success">
+        <img src="" alt="success" />
+        <div>Successful Registration</div>
+      </div>
+      <div id="registration_form">
+        <button id="return_login"></button>
+        <h1>Register</h1>
+        <input type="text" id="username" placeholder="Username" />
+        <input type="text" id="name" placeholder="Name" />
+        <input type="text" id="email" placeholder="Email" />
+        <input type="password" id="password_register" placeholder="Password" />
+        <button id="submit_form" disabled>Submit</button>
+      </div>
+      <div id="login_form">
+        <button id="cancel_login"></button>
+        <h1>Login</h1>
+        <input
+          type="text"
+          id="username_or_email"
+          placeholder="Username/Email"
+        />
+        <input type="password" id="password_login" placeholder="Password" />
+        <button
+          id="login_button"
+        >
+          Login
+        </button>
+        <label for="register_button">Don't have account?</label>
+        <button id="register_button">Register</button>
+        <button id="google_login" onclick = "signInWithGoogle()">
+          <img
+            src="./public/google.png"
+            alt="google"
+            class="img-size"
+          />
+        </button>
+      </div>
+    </div>
+
+    <div id="pretest">
+      <div id="notice">Pretest</div>
+
+      <div id="questions">
+        <div class="choices">
+          <div class="cSub">
+            <button id="a">a</button>
+            <br /><br />
+            <button id="b">b</button>
+          </div>
+          <div class="cSub">
+            <button id="c">c</button>
+            <br /><br />
+            <button id="d">d</button>
+          </div>
+        </div>
+        <div id="q1">1</div>
+      </div>
+      <div>
+        <div class="navB">
+          <button id="previous">previous</button>
+          <button id="next">Next</button>
+        </div>
+        <div class="widthONLY">
+          <p id="msgAlert">This question should not be left empty</p>
+          <button id="ok" disabled>ok</button>
+        </div>
+      </div>
+      <div id="notice2">Thanks for answering our pretest, it will help us to improve your learning experience</div>
+    </div>
+
+    <div id="map">
+      <!-- <img src="./public/undermaintenance.jpg" alt="ehe" style="background-size: cover;width: 100%;height: 100%;"> -->
+
+      <div class="navi">
+        <button id="logout_client">logout</button>
+        <button id="show_lb">slb</button>
+      </div>
+      <div id="user_profile">
+        <div class = "l">
+          <button id="close_userprof">close_userprof</button>
+        </div>
+        
+        <div id="userinformation">
+          <!-- <button id="userphoto">d</button> -->
+          <div id="userdetails">
+            <div id="username_user"></div>
+            <!-- <button id="edit_username">d</button> -->
+            <div id="email_user"></div>
+            <!-- <button id="edit_email"></button> -->
+          </div>
+        </div>
+      </div>
+      <div id="leaderboard">
+        <div style="width: 100%; height: 5%">
+          <!-- <button id="close_lb"></button> -->
+        </div>
+        <div>Leaderboard</div>
+        <table id="leaderboardTable"></table>
+        <!-- <button id="play">PLAY</button> -->
+      </div>
+
+      <!-- <div id="game"></div> -->
+      
+      <div id="profile_banner">
+        <div class="rowFlex">
+          <button id="userphoto">
+            <img src="./public/prof.png" alt="user_photo" class="imgresize" />
+          </button>
+          <div id="show_username">Krupot</div>
+        </div>
+        <div id="hearts">
+          <div id="heart"></div>
+          <div id="heart"></div>
+          <div id="heart"></div>
+          <div id="heart"></div>
+          <div id="heart"></div>
+        </div>
+      </div>
+      <div id="utils">
+          <button id="prev_map">pmap</button>
+          <button id="next_map">nmap</button>
+        
+      </div>
+    </div>
+
+    <!-- <div id="scenes">
+      <div id="blur_bg"></div>
+      <button id="pause"></button>
+      <div id="gameplay">
+        <div id = "choices">
+          <button id="a"></button>
+          <button id="b"></button>
+          <button id="c"></button>
+          <button id="d"></button>
+        </div>
+        <div id="dialog"></div>
+        <div id="background"></div>
+        <div id="progress_bar"></div>
+        <div id="timer"></div>
+      </div>
+      <div id="pause_menu">
+        <button id="resume"></button>
+        <button id="retry"></button>
+        <button id="home"></button>
+      </div>
+      <div id="confirmation_backto_levels">
+        <h1></h1>
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+      </div>
+    </div> -->
+    <!-- <div id="admin">
+      <button id="logout_admin">Logout</button>
+      <h1>User Management</h1>
+      <table id="userdata"></table>
+    </div> -->
+  </body>
+</html>
